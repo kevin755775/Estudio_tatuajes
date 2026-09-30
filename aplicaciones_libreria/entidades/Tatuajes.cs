@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace aplicaciones_libreria.entidades
@@ -13,7 +14,7 @@ namespace aplicaciones_libreria.entidades
         public bool Color { get; set; }
         public int EstiloTatuaje { get; set; }
 
-        public EstilosTatuajes? _EstiloTatuaje { get; set; }
+        [ForeignKey("EstiloTatuaje")] public EstilosTatuajes? _EstiloTatuaje { get; set; }
         public List<Sesiones>? Sesiones { get; set; }
         public List<Citas>? Citas { get; set; }
     }

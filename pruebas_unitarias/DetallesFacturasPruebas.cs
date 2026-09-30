@@ -4,7 +4,7 @@ using aplicaciones_libreria.interfaces;
 using aplicaciones_libreria.nucleo;
 using Microsoft.EntityFrameworkCore;
 
-namespace presentacion_consola
+namespace pruebas_unitarias
 {
     [TestClass]
     public class DetallesFacturasPruebas
@@ -50,7 +50,8 @@ namespace presentacion_consola
 
         private void Actualizar()
         {
-            this.entidad!.Factura = 6;
+            this.entidad!.Factura = 4;
+            this.entidad!.Subtotal = 180000;
 
             var entry = this.conexion!.Entry<DetallesFacturas>(this.entidad);
             entry.State = EntityState.Modified;

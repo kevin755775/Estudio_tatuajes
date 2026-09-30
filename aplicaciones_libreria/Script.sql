@@ -1,4 +1,5 @@
-﻿/*CREATE DATABASE estudio_tatuajes_db;
+﻿/*
+CREATE DATABASE estudio_tatuajes_db;
 GO
 
 USE estudio_tatuajes_db;
@@ -134,7 +135,7 @@ CREATE TABLE [Sesiones] (
 CREATE TABLE [Facturas] (
     [Id] INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
     [Fecha] SMALLDATETIME NOT NULL,
-    [Hora] TIME NOT NULL, 
+    [Hora] SMALLDATETIME NOT NULL, 
     [Total] DECIMAL(10, 2) NOT NULL,
     [IVA] DECIMAL(10, 2) NOT NULL,
     [Pago] INT NOT NULL REFERENCES [Pagos]([Id])

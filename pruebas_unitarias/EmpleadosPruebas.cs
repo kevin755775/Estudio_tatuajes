@@ -4,7 +4,7 @@ using aplicaciones_libreria.interfaces;
 using aplicaciones_libreria.nucleo;
 using Microsoft.EntityFrameworkCore;
 
-namespace presentacion_consola
+namespace pruebas_unitarias
 {
     [TestClass]
     public class EmpleadosPruebas

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace aplicaciones_libreria.entidades
@@ -15,12 +16,11 @@ namespace aplicaciones_libreria.entidades
         public int Sede { get; set; }
         public int Cliente { get; set; }
         public int Tatuador { get; set; }
-
-        public Tatuajes? _Tatuaje { get; set; }
-        public Consentimientos? _Consentimiento { get; set; }
-        public Facturas? _Factura { get; set; }
-        public Sedes? _Sede { get; set; }
-        public Clientes? _Cliente { get; set; }
-        public Tatuadores? _Tatuador { get; set; }
+        [ForeignKey("Tatuaje")] public Tatuajes? _Tatuaje { get; set; }
+        [ForeignKey("Consentimiento")] public Consentimientos? _Consentimiento { get; set; }
+        [ForeignKey("Factura")]   public Facturas? _Factura { get; set; }
+        [ForeignKey("Sede")]public Sedes? _Sede { get; set; }
+        [ForeignKey("Cliente")] public Clientes? _Cliente { get; set; }
+        [ForeignKey("Tatuador")] public Tatuadores? _Tatuador { get; set; }
     }
 }

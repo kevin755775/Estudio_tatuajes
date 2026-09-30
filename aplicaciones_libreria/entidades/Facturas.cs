@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace aplicaciones_libreria.entidades
@@ -13,7 +14,7 @@ namespace aplicaciones_libreria.entidades
         public decimal IVA { get; set; }
         public int Pago { get; set; }
 
-        public Pagos? _Pago { get; set; }
+        [ForeignKey("Pago")] public Pagos? _Pago { get; set; }
         public List<Citas>? Citas { get; set; }
         public List<DetallesFacturas>? DetallesFacturas { get; set; }
     }

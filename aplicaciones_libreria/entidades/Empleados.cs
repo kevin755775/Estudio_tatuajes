@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace aplicaciones_libreria.entidades
@@ -13,7 +14,7 @@ namespace aplicaciones_libreria.entidades
         public int Sede { get; set; }
         public int Persona { get; set; }
 
-        public Sedes? _Sede { get; set; }
-        public Personas? _Persona { get; set; }
+        [ForeignKey("Sede")] public Sedes? _Sede { get; set; }
+        [ForeignKey("Persona")] public Personas? _Persona { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace aplicaciones_libreria.entidades
@@ -13,8 +14,8 @@ namespace aplicaciones_libreria.entidades
         public int Factura { get; set; }
         public int Producto { get; set; }
 
-        public Facturas? _Factura { get; set; }
-        public ProductosVentas? _Producto { get; set; }
+        [ForeignKey("Factura")] public Facturas? _Factura { get; set; }
+        [ForeignKey("Producto")] public ProductosVentas? _Producto { get; set; }
     }
 
 }

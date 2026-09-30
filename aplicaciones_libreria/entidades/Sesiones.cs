@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace aplicaciones_libreria.entidades
@@ -12,6 +13,6 @@ namespace aplicaciones_libreria.entidades
         public DateTime FechaInicio { get; set; }
         public int Tatuaje { get; set; }
 
-        public Tatuajes? _Tatuaje { get; set; }
+        [ForeignKey("Tatuaje")] public Tatuajes? _Tatuaje { get; set; }
     }
 }
