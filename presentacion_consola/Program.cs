@@ -1,14 +1,15 @@
 ﻿using aplicaciones_libreria.implementaciones;
 using aplicaciones_libreria.interfaces;
+using aplicaciones_libreria.nucleo;
 using Microsoft.EntityFrameworkCore;
 
 try
 {
     IConexion conexion = new Conexion();
    
-    conexion.StringConexion = "server=localhost;database=estudio_tatuajes_db;Integrated Security=True;TrustServerCertificate=true;";
+    conexion.StringConexion = Datosgenerales.ObtenerStringConexion();
 
-    
+
     var lista_personas = conexion.Personas!.ToList();
 
     
