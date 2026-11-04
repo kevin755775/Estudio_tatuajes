@@ -1,8 +1,9 @@
-﻿using aplicaciones_libreria.entidades;
-using aplicaciones_libreria.interfaces;
+﻿
+using Aplicaciones_libreria.entidades;
+using Aplicaciones_libreria.interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace aplicaciones_libreria.implementaciones
+namespace Aplicaciones_libreria.implementaciones
 {
     public class Conexion : DbContext, IConexion
     {
