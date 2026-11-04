@@ -1,6 +1,6 @@
-﻿using aplicaciones_libreria.implementaciones;
-using aplicaciones_libreria.interfaces;
-using aplicaciones_libreria.nucleo;
+﻿using Aplicaciones_libreria.nucleo;
+using Aplicaciones_libreria.implementaciones;
+using Aplicaciones_libreria.interfaces;
 using Microsoft.EntityFrameworkCore;
 
 try

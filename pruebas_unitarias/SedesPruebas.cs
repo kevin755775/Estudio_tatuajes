@@ -1,7 +1,7 @@
-﻿using aplicaciones_libreria.entidades;
-using aplicaciones_libreria.implementaciones;
-using aplicaciones_libreria.interfaces;
-using aplicaciones_libreria.nucleo;
+﻿using Aplicaciones_libreria.entidades;
+using Aplicaciones_libreria.implementaciones;
+using Aplicaciones_libreria.interfaces;
+using Aplicaciones_libreria.nucleo;
 using Microsoft.EntityFrameworkCore;
 
 namespace pruebas_unitarias

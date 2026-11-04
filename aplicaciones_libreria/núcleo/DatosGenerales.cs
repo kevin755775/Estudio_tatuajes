@@ -1,4 +1,4 @@
-﻿namespace aplicaciones_libreria.nucleo
+﻿namespace Aplicaciones_libreria.nucleo
 {
     public class Datosgenerales
     {

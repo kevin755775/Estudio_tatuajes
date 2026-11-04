@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\aplicaciones_libreria\aplicaciones_libreria.csproj" />
+    <ProjectReference Include="..\Aplicaciones_libreria\Aplicaciones_libreria.csproj" />
   </ItemGroup>
 
   <ItemGroup>
