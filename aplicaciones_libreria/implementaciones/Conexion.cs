@@ -1,6 +1,7 @@
 ﻿
 using Aplicaciones_libreria.entidades;
 using Aplicaciones_libreria.interfaces;
+using Aplicaciones_libreria.nucleo;
 using Microsoft.EntityFrameworkCore;
 
 namespace Aplicaciones_libreria.implementaciones
@@ -11,7 +12,7 @@ namespace Aplicaciones_libreria.implementaciones
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(this.StringConexion!, p => { });
+            optionsBuilder.UseSqlServer(DatosGenerales.ObtenerStringConexion()!, p => { });
             optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
         }
 

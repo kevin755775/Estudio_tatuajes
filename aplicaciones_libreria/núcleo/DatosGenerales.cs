@@ -1,6 +1,6 @@
 ﻿namespace Aplicaciones_libreria.nucleo
 {
-    public class Datosgenerales
+    public class DatosGenerales
     {
         public static string ObtenerStringConexion()
         {
