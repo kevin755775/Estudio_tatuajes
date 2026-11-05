@@ -1,0 +1,50 @@
+﻿using Aplicaciones_libreria.entidades;
+using Aplicaciones_libreria.interfaces;
+using Microsoft.AspNetCore.Mvc;
+
+namespace servicio_EstudioTatuajes.Controllers
+{
+    [ApiController]
+    [Route("[controller]/[action]")]
+    public class EmpleadosController : ControllerBase
+    {
+        private IEmpleadosAplicacion IEmpleadosAplicacion;
+
+        public EmpleadosController(IEmpleadosAplicacion IEmpleadosAplicacion)
+        {
+            this.IEmpleadosAplicacion = IEmpleadosAplicacion;
+        }
+
+        [HttpPost]
+        public List<Empleados> Consultar()
+        {
+            return this.IEmpleadosAplicacion.Consultar();
+        }
+
+        [HttpPost]
+        public List<Empleados> Buscar(Empleados entidad)
+        {
+            return this.IEmpleadosAplicacion.Buscar(entidad);
+        }
+
+        [HttpPost]
+        public Empleados Insertar(Empleados entidad)
+        {
+            return this.IEmpleadosAplicacion.Insertar(entidad);
+        }
+
+        [HttpPost]
+        public Empleados Actualizar(Empleados entidad)
+        {
+            return this.IEmpleadosAplicacion.Actualizar(entidad);
+        }
+
+        [HttpPost]
+        public Empleados Borrar(Empleados entidad)
+        {
+            return this.IEmpleadosAplicacion.Borrar(entidad);
+        }
+
+
+    }
+}
