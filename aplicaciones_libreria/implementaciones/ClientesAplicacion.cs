@@ -40,16 +40,16 @@ namespace Aplicaciones_libreria.implementaciones
 
         public List<Clientes> Buscar(Clientes entidad)
         {
-            
             return this.IConexion.Clientes!
+                .Include(x => x._Persona)
                 .Where(x => x.Persona == entidad.Persona)
                 .ToList();
         }
 
         public List<Clientes> Consultar()
         {
-            
             return this.IConexion.Clientes!
+                .Include(x => x._Persona)
                 .Take(5)
                 .ToList();
         }
@@ -57,7 +57,7 @@ namespace Aplicaciones_libreria.implementaciones
         public Clientes Insertar(Clientes entidad)
         {
             if (entidad.Id != 0)
-                throw new Exception("Ya se guardó");
+                throw new Exception("Ya se guardo");
 
             if (Validar(entidad))
                 throw new Exception("Falta informacion");
@@ -69,7 +69,8 @@ namespace Aplicaciones_libreria.implementaciones
 
         private bool Validar(Clientes entidad)
         {
-            return entidad.Persona == 0;
+            return string.IsNullOrEmpty(entidad.TipoPiel) ||
+                   entidad.Persona == 0;
         }
     }
 }

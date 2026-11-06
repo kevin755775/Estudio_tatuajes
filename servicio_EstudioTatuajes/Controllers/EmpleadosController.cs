@@ -14,7 +14,7 @@ namespace servicio_EstudioTatuajes.Controllers
         {
             this.IEmpleadosAplicacion = IEmpleadosAplicacion;
         }
-
+        
         [HttpPost]
         public List<Empleados> Consultar()
         {

@@ -15,7 +15,7 @@ namespace servicio_EstudioTatuajes.Controllers
             this.IClientesAplicacion = IClientesAplicacion;
         }
 
-        [HttpGet]
+        [HttpPost]
         public List<Clientes> Consultar()
         {
             return this.IClientesAplicacion.Consultar();
