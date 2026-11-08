@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="Aplicaciones_libreria/Aplicaciones_libreria.csproj" Id="2700d4bb-5afc-4f13-82fa-b67d28f7ae88" />
+  <Project Path="front_EstudioTatuajes/front_EstudioTatuajes.csproj" Id="7455f429-9b8b-4af3-bc8d-cda875c90da8" />
   <Project Path="presentacion_consola/presentacion_consola.csproj" Id="11a1e49b-c484-4351-bff7-1f60f363ee86" />
   <Project Path="pruebas_unitarias/pruebas_unitarias.csproj" Id="b41a5fc7-4b22-4037-a2e8-ba58d98b36da" />
   <Project Path="servicio_EstudioTatuajes/servicio_EstudioTatuajes.csproj" Id="ec9d02ff-1351-4f0d-9f79-7855cab4df21" />
