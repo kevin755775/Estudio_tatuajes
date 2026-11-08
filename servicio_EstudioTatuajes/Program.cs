@@ -20,19 +20,19 @@ builder.Services.AddScoped<ICotizacionesAplicacion, CotizacionesAplicacion>();
 builder.Services.AddScoped<IDescuentosAplicacion, DescuentosAplicacion>();
 builder.Services.AddScoped<IDetallesFacturasAplicacion, DetallesFacturasAplicacion>();
 builder.Services.AddScoped<IEmpleadosAplicacion, EmpleadosAplicacion>();
-//builder.Services.AddScoped<IEstilosTatuajesAplicacion, EstilosTatuajesAplicacion>();
-//builder.Services.AddScoped<IFacturasAplicacion, FacturasAplicacion>();
-//builder.Services.AddScoped<IGastosAplicacion, GastosAplicacion>();
-//builder.Services.AddScoped<IImplementosAplicacion, ImplementosAplicacion>();
-//builder.Services.AddScoped<IPagosAplicacion, PagosAplicacion>();
-//builder.Services.AddScoped<IPersonasAplicacion, PersonasAplicacion>();
-//builder.Services.AddScoped<IPortafoliosAplicacion, PortafoliosAplicacion>();
-//builder.Services.AddScoped<IProductosVentasAplicacion, ProductosVentasAplicacion>();
-//builder.Services.AddScoped<IProveedoresAplicacion, ProveedoresAplicacion>();
-//builder.Services.AddScoped<ISedesAplicacion, SedesAplicacion>();
-//builder.Services.AddScoped<ISesionesAplicacion, SesionesAplicacion>();
-//builder.Services.AddScoped<ITatuadoresAplicacion, TatuadoresAplicacion>();
-//builder.Services.AddScoped<ITatuajesAplicacion, TatuajesAplicacion>();
+builder.Services.AddScoped<IEstilosTatuajesAplicacion, EstilosTatuajesAplicacion>();
+builder.Services.AddScoped<IFacturasAplicacion, FacturasAplicacion>();
+builder.Services.AddScoped<IGastosAplicacion, GastosAplicacion>();
+builder.Services.AddScoped<IImplementosAplicacion, ImplementosAplicacion>();
+builder.Services.AddScoped<IPagosAplicacion, PagosAplicacion>();
+builder.Services.AddScoped<IPersonasAplicacion, PersonasAplicacion>();
+builder.Services.AddScoped<IPortafoliosAplicacion, PortafoliosAplicacion>();
+builder.Services.AddScoped<IProductosVentasAplicacion, ProductosVentasAplicacion>();
+builder.Services.AddScoped<IProveedoresAplicacion, ProveedoresAplicacion>();
+builder.Services.AddScoped<ISedesAplicacion, SedesAplicacion>();
+builder.Services.AddScoped<ISesionesAplicacion, SesionesAplicacion>();
+builder.Services.AddScoped<ITatuadoresAplicacion, TatuadoresAplicacion>();
+builder.Services.AddScoped<ITatuajesAplicacion, TatuajesAplicacion>();
 
 
 
