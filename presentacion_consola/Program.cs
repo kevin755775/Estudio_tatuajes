@@ -7,7 +7,7 @@ try
 {
     IConexion conexion = new Conexion();
    
-    conexion.StringConexion = Datosgenerales.ObtenerStringConexion();
+    conexion.StringConexion = DatosGenerales.ObtenerStringConexion();
 
 
     var lista_personas = conexion.Personas!.ToList();

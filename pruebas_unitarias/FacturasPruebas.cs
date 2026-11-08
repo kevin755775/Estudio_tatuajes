@@ -15,7 +15,7 @@ namespace pruebas_unitarias
         public FacturasPruebas()
         {
             this.conexion = new Conexion();
-            this.conexion.StringConexion = Datosgenerales.ObtenerStringConexion();
+            this.conexion.StringConexion = DatosGenerales.ObtenerStringConexion();
         }
 
         [TestMethod]
