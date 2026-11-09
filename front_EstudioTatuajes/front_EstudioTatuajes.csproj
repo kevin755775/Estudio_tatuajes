@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\presentacion_consola\presentacion_consola.csproj" />
+  </ItemGroup>
+
 </Project>
