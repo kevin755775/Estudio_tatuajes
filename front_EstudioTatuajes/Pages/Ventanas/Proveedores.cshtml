@@ -1,0 +1,150 @@
+﻿@page
+@model ProveedoresModel
+@{
+    ViewData["Title"] = "Proveedores";
+}
+<form method="post"
+      enctype="multipart/form-data">
+
+    <div class="text-center">
+        <h1 class="display-4">Proveedores</h1>
+        <div>
+            <input type="submit"
+                   value="Consultar"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtConsultar" />
+            <input type="submit"
+                   value="Nuevo"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtNuevo" />
+            <input type="submit"
+                   value="Guardar"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtGuardar" />
+            <input id="flNombreEmpresa"
+                   placeholder="NombreEmpresa"
+                   asp-for="@Model.Filtro!.NombreEmpresa" />
+        </div>
+
+        @if (ViewData.ContainsKey("Mensaje"))
+        {
+            @await Html.PartialAsync("../Emergentes/Mensajes.cshtml")
+            ;
+        }
+
+        @if (Model.Formulario || Model.Borrar)
+        {
+            <input type="hidden"
+                   asp-for="@Model.Actual!.Id" />
+        }
+
+        @if (Model.Formulario)
+        {
+            <div>
+                <h3>Proveedores</h3>
+
+                <label>
+                    NombreEmpresa
+                </label>
+                <input asp-for="@Model.Actual!.NombreEmpresa" />
+                <br />
+
+                <label>
+                    Telefono
+                </label>
+                <input asp-for="@Model.Actual!.Telefono" />
+                <br />
+
+                <label>
+                    Direccion
+                </label>
+                <input asp-for="@Model.Actual!.Direccion" />
+                <br />
+
+                <label>
+                    Correo
+                </label>
+                <input asp-for="@Model.Actual!.Correo" />
+                <br />
+
+                <label>
+                    Tipo
+                </label>
+                <input asp-for="@Model.Actual!.Tipo" />
+                <br />
+            </div>
+        }
+
+        @if (Model.Borrar)
+        {
+            <div class="popup">
+                <div class="pp_del_inner">
+                    <h3>
+                        Mensaje
+                    </h3>
+
+                    <h4>
+                        ¿Quiere borrar el proveedor con información ID:
+                        @Model.Actual!.Id,
+                        Nombre: @Model.Actual!.NombreEmpresa,
+                        Telefono: @Model.Actual!.Telefono
+                    </h4>
+                    <input type="submit"
+                           value="Cancelar"
+                           class="btn btn-secondary"
+                           asp-page-handler="BtConsultar" />
+                    <input type="submit"
+                           value="Borrar"
+                           class="btn btn-secondary"
+                           asp-page-handler="BtBorrar" />
+                </div>
+            </div>
+        }
+
+        @if (!Model.Formulario)
+        {
+            <br />
+            <br />
+            <div class="containers_vn panel panel-default">
+                <table class="tb_data table table-striped table-bordered table-hover">
+                    <tr>
+                        <th>ID</th>
+                        <th>NombreEmpresa </th>
+                        <th>Telefono</th>
+                        <th>Direccion</th>
+                        <th>Correo</th>
+                        <th>Tipo</th>
+                        <th>Acción</th>
+                    </tr>
+                    @if (Model != null && Model.Lista != null)
+                    {
+                        foreach (var elemento in Model.Lista)
+                        {
+                            <tr>
+                                <td>@elemento.Id</td>
+                                <td>@elemento.NombreEmpresa</td>
+                                <td>@elemento.Telefono</td>
+                                <td>@elemento.Direccion</td>
+                                <td>@elemento.Correo</td>
+                                <td>@elemento.Tipo</td>
+                                <td>
+                                    <input type="submit"
+                                           value="Editar"
+                                           class="btn btn-secondary"
+                                           asp-page-handler="BtEditar"
+                                           asp-route-data="@elemento.Id" />
+                                    <input type="submit"
+                                           value="Borrar"
+                                           class="btn btn-secondary"
+                                           asp-page-handler="BtPregBorrar"
+                                           asp-route-data="@elemento.Id" />
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        }
+
+    </div>
+</form>
