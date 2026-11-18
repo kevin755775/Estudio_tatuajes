@@ -45,7 +45,7 @@ namespace Aplicaciones_libreria.implementaciones
             return this.IConexion.Implementos!
                 .Include(x => x._Proveedores)
                 .Include(x => x._Sede)
-                .Where(x => x.Sede == entidad.Sede)
+                .Where(x => x.Nombre != null && x.Nombre.Contains(entidad.Nombre ?? ""))
                 .ToList();
         }
 

@@ -44,7 +44,7 @@ namespace Aplicaciones_libreria.implementaciones
         {
             return this.IConexion.Facturas!
                 .Include(x => x._Pago)
-                .Where(x => x.Pago == entidad.Pago)
+                .Where(x => x.Total != null && x.Total.Contains(entidad.Total))
                 .ToList();
         }
 
