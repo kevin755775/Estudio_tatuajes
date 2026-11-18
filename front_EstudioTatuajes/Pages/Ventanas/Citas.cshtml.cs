@@ -8,14 +8,20 @@ namespace front_EstudioTatuajes.Pages.Ventanas
 {
     public class CitasModel : PageModel
     {
+        private IClientesPresentacion IClientesPresentacion;
+        private ITatuadoresPresentacion ITatuadoresPresentacion;
         private ICitasPresentacion ICitasPresentacion;
 
-        public CitasModel(ICitasPresentacion ICitasPresentacion)
+        public CitasModel(IClientesPresentacion IClientesPresentacion, ITatuadoresPresentacion ITatuadoresPresentacion, ICitasPresentacion ICitasPresentacion)
         {
+            this.IClientesPresentacion = IClientesPresentacion;
             this.ICitasPresentacion = ICitasPresentacion;
+            this.ITatuadoresPresentacion = ITatuadoresPresentacion;
             this.Filtro = new Citas();
         }
-
+        public IFormFile? FormFile { get; set; }
+        [BindProperty] public List<Clientes> Clientes { get; set; }
+        [BindProperty] public List<Tatuadores> Tatuadores { get; set; }
         [BindProperty] public List<Citas> Lista { get; set; }
         [BindProperty] public Citas? Filtro { get; set; }
         [BindProperty] public Citas? Actual { get; set; }
@@ -43,6 +49,8 @@ namespace front_EstudioTatuajes.Pages.Ventanas
             {
                 Formulario = true;
                 this.Actual = new Citas { FechaHora = DateTime.Now };
+                this.Tatuadores = this.ITatuadoresPresentacion.Consultar();
+                this.Clientes = this.IClientesPresentacion.Consultar();
             }
             catch (Exception ex)
             {

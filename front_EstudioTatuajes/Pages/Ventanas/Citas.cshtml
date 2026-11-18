@@ -44,7 +44,7 @@
                 <h3>Cita</h3>
 
                 <label>
-                    Fecha y Hora
+                    Fecha 
                 </label>
                 <input type="datetime-local"
                        asp-for="@Model.Actual!.FechaHora" />
@@ -87,15 +87,19 @@
                 <label>
                     Cliente (ID)
                 </label>
-                <input type="number"
-                       asp-for="@Model.Actual!.Cliente" />
+                <select id="nmCliente"
+                        asp-for="@Model.Actual!.Cliente"
+                        asp-items="@(new SelectList(Model.Clientes, "Id", "TipoPiel"))">
+                </select>
                 <br />
 
                 <label>
                     Tatuador (ID)
                 </label>
-                <input type="number"
-                       asp-for="@Model.Actual!.Tatuador" />
+                <select id="nmTatuador"
+                        asp-for="@Model.Actual!.Tatuador"
+                        asp-items="@(new SelectList(Model.Tatuadores, "Id","_Personas.Nombre"))">
+                </select>
                 <br />
             </div>
         }
@@ -134,11 +138,14 @@
                 <table class="tb_data table table-striped table-bordered table-hover">
                     <tr>
                         <th>ID</th>
-                        <th>Fecha y Hora</th>
+                        <th>Fecha </th>
                         <th>Estado</th>
+                        <th>Tatuaje</th>
+                        <th>Consentimiento</th>
+                        <th>Factura</th>
+                        <th>Sede</th>
                         <th>Cliente</th>
                         <th>Tatuador</th>
-                        <th>Sede</th>
                         <th>Acción</th>
                     </tr>
                     @if (Model != null && Model.Lista != null)
@@ -149,9 +156,12 @@
                                 <td>@elemento.Id</td>
                                 <td>@elemento.FechaHora</td>
                                 <td>@elemento.Estado</td>
-                                <td>@elemento.Cliente</td>
-                                <td>@elemento.Tatuador</td>
-                                <td>@elemento.Sede</td>
+                                <td>@elemento._Tatuaje.ZonaCuerpo</td>
+                                <td>@elemento._Consentimiento.FirmaSiNo</td>
+                                <td>@elemento._Factura.Total</td>
+                                <td>@elemento._Sede.Direccion</td>
+                                <td>@elemento._Cliente._Persona.Nombre</td>
+                                <td>@elemento._Tatuador._Persona.Nombre</td>
                                 <td>
                                     <input type="submit"
                                            value="Editar"

@@ -43,10 +43,13 @@ namespace Aplicaciones_libreria.implementaciones
             return this.IConexion.Citas!
                 .Include(x => x._Tatuaje)
                 .Include(x => x._Consentimiento)
+                
                 .Include(x => x._Factura)
                 .Include(x => x._Sede)
                 .Include(x => x._Cliente)
+                .Include(x => x._Cliente!._Persona)
                 .Include(x => x._Tatuador)
+                .Include(x => x._Tatuador!._Persona)
                 .Where(x => x.Estado != null && x.Estado.Contains(entidad.Estado ?? ""))
                 .ToList();
         }
@@ -56,10 +59,13 @@ namespace Aplicaciones_libreria.implementaciones
             return this.IConexion.Citas!
                 .Include(x => x._Tatuaje)
                 .Include(x => x._Consentimiento)
+                
                 .Include(x => x._Factura)
                 .Include(x => x._Sede)
                 .Include(x => x._Cliente)
+                .Include(x => x._Cliente!._Persona)
                 .Include(x => x._Tatuador)
+                .Include(x => x._Tatuador!._Persona)
                 .Take(5) 
                 .ToList();
         }

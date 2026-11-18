@@ -13,6 +13,8 @@ builder.Services.AddControllers();
 
 builder.Services.AddScoped<IComunicaciones, Comunicaciones>();
 builder.Services.AddScoped<ICitasPresentacion, CitasPresentacion>();
+builder.Services.AddScoped<ITatuadoresPresentacion, TatuadoresPresentacion>();
+builder.Services.AddScoped<IClientesPresentacion, ClientesPresentacion>();
 
 var app = builder.Build();
 
