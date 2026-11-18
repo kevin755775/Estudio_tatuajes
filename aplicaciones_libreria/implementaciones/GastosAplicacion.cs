@@ -44,7 +44,7 @@ namespace Aplicaciones_libreria.implementaciones
         {
             return this.IConexion.Gastos!
                 .Include(x => x._Sede)
-                .Where(x => x.Sede == entidad.Sede)
+                .Where(x => x.Descripcion != null && x.Descripcion.Contains(entidad.Descripcion ?? ""))
                 .ToList();
         }
 
