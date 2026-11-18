@@ -43,7 +43,7 @@ namespace Aplicaciones_libreria.implementaciones
             return this.IConexion.DetallesFacturas!
                 .Include(x => x._Factura)
                 .Include(x => x._Producto)
-                .Where(x => x.Factura == entidad.Factura)
+                .Where(x => x.Subtotal >= entidad.Subtotal)
                 .ToList();
         }
 

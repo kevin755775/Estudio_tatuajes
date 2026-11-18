@@ -44,8 +44,8 @@ namespace Aplicaciones_libreria.implementaciones
                 .Include(x => x._Tatuador)
                 .Include(x => x._Tatuador!._Persona)
                 .Include(x => x._Descuento)
-                
-                .Where(x => entidad.Tatuador == 0 || x.Tatuador == entidad.Tatuador)
+
+                .Where(x => x.ValorEstimado >= entidad.ValorEstimado)
                 .ToList();
         }
 

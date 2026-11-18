@@ -36,7 +36,7 @@ namespace front_EstudioTatuajes.Pages.Ventanas
         {
             try
             {
-                Filtro!.Total = Filtro!.Total ?? "";
+                Filtro!.Total = Filtro!.Total;
                 Lista = this.IFacturasPresentacion.Buscar(Filtro!);
             }
             catch (Exception ex)

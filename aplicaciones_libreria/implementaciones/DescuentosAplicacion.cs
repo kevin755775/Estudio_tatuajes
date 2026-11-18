@@ -41,7 +41,7 @@ namespace Aplicaciones_libreria.implementaciones
         public List<Descuentos> Buscar(Descuentos entidad)
         {
             return this.IConexion.Descuentos!
-                .Where(x => x.Codigo == entidad.Codigo)
+                .Where(x => entidad.Codigo == 0 || x.Codigo == entidad.Codigo)
                 .ToList();
         }
 

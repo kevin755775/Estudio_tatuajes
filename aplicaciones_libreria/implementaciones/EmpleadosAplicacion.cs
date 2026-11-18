@@ -43,7 +43,7 @@ namespace Aplicaciones_libreria.implementaciones
             return this.IConexion.Empleados!
                 .Include(x => x._Sede)
                 .Include(x => x._Persona)
-                .Where(x => x.Sede == entidad.Sede)
+                .Where(x => x.Cargo != null && x.Cargo.Contains(entidad.Cargo ?? ""))
                 .ToList();
         }
 
