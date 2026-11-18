@@ -25,7 +25,7 @@ builder.Services.AddScoped<IFacturasPresentacion, FacturasPresentacion>();
 //builder.Services.AddScoped<IGastosPresentacion, GastosPresentacion>();
 //builder.Services.AddScoped<IImplementosPresentacion, ImplementosPresentacion>();
 //builder.Services.AddScoped<IPagosPresentacion, PagosPresentacion>();
-//builder.Services.AddScoped<IPersonasPresentacion, PersonasPresentacion>();
+builder.Services.AddScoped<IPersonasPresentacion, PersonasPresentacion>();
 //builder.Services.AddScoped<IPortafoliosPresentacion, PortafoliosPresentacion>();
 //builder.Services.AddScoped<IProductosVentasPresentacion, ProductosVentasPresentacion>();
 //builder.Services.AddScoped<IProveedoresPresentacion, ProveedoresPresentacion>();

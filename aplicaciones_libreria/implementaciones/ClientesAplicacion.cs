@@ -42,7 +42,7 @@ namespace Aplicaciones_libreria.implementaciones
         {
             return this.IConexion.Clientes!
                 .Include(x => x._Persona)
-                .Where(x => x.Persona == entidad.Persona)
+                .Where(x => x.TipoPiel != null && x.TipoPiel.Contains(entidad.TipoPiel ?? ""))
                 .ToList();
         }
 
