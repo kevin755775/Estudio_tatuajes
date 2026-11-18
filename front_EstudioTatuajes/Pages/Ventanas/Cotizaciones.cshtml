@@ -1,0 +1,159 @@
+﻿@page
+@model CotizacionesModel
+@{
+    ViewData["Title"] = "Cotizaciones";
+}
+<form method="post"
+      enctype="multipart/form-data">
+
+    <div class="text-center">
+        <h1 class="display-4">Cotizaciones</h1>
+        <div>
+            <input type="submit"
+                   value="Consultar"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtConsultar" />
+            <input type="submit"
+                   value="Nuevo"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtNuevo" />
+            <input type="submit"
+                   value="Guardar"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtGuardar" />
+            <input id="flValorEstimado"
+                   placeholder="ValorEstimado"
+                   asp-for="@Model.Filtro!.ValorEstimado" />
+        </div>
+
+        @if (ViewData.ContainsKey("Mensaje"))
+        {
+            @await Html.PartialAsync("../Emergentes/Mensajes.cshtml")
+            ;
+        }
+
+        @if (Model.Formulario || Model.Borrar)
+        {
+            <input type="hidden"
+                   asp-for="@Model.Actual!.Id" />
+        }
+
+        @if (Model.Formulario)
+        {
+            <div>
+                <h3>Cotizaciones</h3>
+
+                <label>
+                    Valor Estimado
+                </label>
+                <input asp-for="@Model.Actual!.ValorEstimado" />
+                <br />
+
+                <label>
+                    Fecha de Emision
+                </label>
+                <input type="datetime-local"
+                       asp-for="@Model.Actual!.FechaEmision" />
+                <br />
+
+
+                <label>
+                    Vigencia Dias
+                </label>
+                <input asp-for="@Model.Actual!.VigenciaDias" />
+                <br />
+
+                <label>
+                    Tatuador -Nombre
+                </label>
+                <select id="nmTatuador"
+                        asp-for="@Model.Actual!.Tatuador"
+                        asp-items="@(new SelectList(Model.Tatuadores, "Id", "_Persona.Nombre"))">
+                </select>
+                <br />
+                <label>
+                    Descuento - Porcentaje descuento
+                </label>
+                <select id="nmDescuento"
+                        asp-for="@Model.Actual!.Descuento"
+                        asp-items="@(new SelectList(Model.Descuentos, "Id", "PorcentajeDesc"))">
+                </select>
+                <br />
+                
+            </div>
+        }
+
+        @if (Model.Borrar)
+        {
+            <div class="popup">
+                <div class="pp_del_inner">
+                    <h3>
+                        Mensaje
+                    </h3>
+
+                    <h4>
+                        ¿Quiere borrar la Cotizacion con información ID:
+                        @Model.Actual!.Id,
+                        Valor Estimado @Model.Actual!.ValorEstimado,
+                        FechaEmision @Model.Actual!.FechaEmision?
+                    </h4>
+                    <input type="submit"
+                           value="Cancelar"
+                           class="btn btn-secondary"
+                           asp-page-handler="BtConsultar" />
+                    <input type="submit"
+                           value="Borrar"
+                           class="btn btn-secondary"
+                           asp-page-handler="BtBorrar" />
+                </div>
+            </div>
+        }
+
+        @if (!Model.Formulario)
+        {
+            <br />
+            <br />
+            <div class="containers_vn panel panel-default">
+                <table class="tb_data table table-striped table-bordered table-hover">
+                    <tr>
+                        <th>ID</th>
+                        <th>ValorEstimado </th>
+                        <th>FechaEmision</th>
+                        <th>VigenciaDias</th>
+                        <th>Tatuador</th>
+                        <th>Descuento</th>
+
+                        <th>Acción</th>
+                    </tr>
+                    @if (Model != null && Model.Lista != null)
+                    {
+                        foreach (var elemento in Model.Lista)
+                        {
+                            <tr>
+                                <td>@elemento.Id</td>
+                                <td>@elemento.ValorEstimado</td>
+                                <td>@elemento.FechaEmision</td>
+                                <td>@elemento.VigenciaDias</td>
+                                <td>@elemento._Tatuador._Persona.Nombre</td>
+                                <td>@elemento._Descuento.PorcentajeDesc</td>
+                                <td>
+                                    <input type="submit"
+                                           value="Editar"
+                                           class="btn btn-secondary"
+                                           asp-page-handler="BtEditar"
+                                           asp-route-data="@elemento.Id" />
+                                    <input type="submit"
+                                           value="Borrar"
+                                           class="btn btn-secondary"
+                                           asp-page-handler="BtPregBorrar"
+                                           asp-route-data="@elemento.Id" />
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        }
+
+    </div>
+</form>
