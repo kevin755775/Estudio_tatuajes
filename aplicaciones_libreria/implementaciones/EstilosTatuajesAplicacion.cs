@@ -49,7 +49,7 @@ namespace Aplicaciones_libreria.implementaciones
 
         public List<EstilosTatuajes> Consultar()
         {
-            return this.IConexion.EstilosTatuajes!.Take(5).ToList();
+            return this.IConexion.EstilosTatuajes!.ToList();
         }
 
         public EstilosTatuajes Insertar(EstilosTatuajes entidad)

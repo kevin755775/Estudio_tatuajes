@@ -66,7 +66,7 @@ namespace Aplicaciones_libreria.implementaciones
                 .Include(x => x._Cliente!._Persona)
                 .Include(x => x._Tatuador)
                 .Include(x => x._Tatuador!._Persona)
-                .Take(5) 
+                
                 .ToList();
         }
 

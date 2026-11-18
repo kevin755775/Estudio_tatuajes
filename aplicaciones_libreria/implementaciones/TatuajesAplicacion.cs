@@ -52,7 +52,7 @@ namespace Aplicaciones_libreria.implementaciones
         {
             return this.IConexion.Tatuajes!
                 .Include(x => x._EstiloTatuaje)
-                .Take(5)
+                
                 .ToList();
         }
 

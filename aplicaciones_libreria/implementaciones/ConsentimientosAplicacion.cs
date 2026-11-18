@@ -47,7 +47,7 @@ namespace Aplicaciones_libreria.implementaciones
 
         public List<Consentimientos> Consultar()
         {
-            return this.IConexion.Consentimientos!.Take(5).ToList();
+            return this.IConexion.Consentimientos!.ToList();
         }
 
         public Consentimientos Insertar(Consentimientos entidad)

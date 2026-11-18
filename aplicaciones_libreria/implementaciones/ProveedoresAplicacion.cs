@@ -49,7 +49,7 @@ namespace Aplicaciones_libreria.implementaciones
 
         public List<Proveedores> Consultar()
         {
-            return this.IConexion.Proveedores!.Take(5).ToList();
+            return this.IConexion.Proveedores!.ToList();
         }
 
         public Proveedores Insertar(Proveedores entidad)

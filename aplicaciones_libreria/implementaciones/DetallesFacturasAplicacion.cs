@@ -52,7 +52,7 @@ namespace Aplicaciones_libreria.implementaciones
             return this.IConexion.DetallesFacturas!
                 .Include(x => x._Factura)
                 .Include(x => x._Producto)
-                .Take(5)
+                
                 .ToList();
         }
 

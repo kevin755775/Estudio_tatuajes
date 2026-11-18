@@ -52,7 +52,7 @@ namespace Aplicaciones_libreria.implementaciones
         {
             return this.IConexion.Gastos!
                 .Include(x => x._Sede)
-                .Take(5)
+                
                 .ToList();
         }
 

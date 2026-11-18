@@ -49,7 +49,7 @@ namespace Aplicaciones_libreria.implementaciones
 
         public List<Sedes> Consultar()
         {
-            return this.IConexion.Sedes!.Take(5).ToList();
+            return this.IConexion.Sedes!.ToList();
         }
 
         public Sedes Insertar(Sedes entidad)

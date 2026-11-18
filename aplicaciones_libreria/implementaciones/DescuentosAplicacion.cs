@@ -47,7 +47,7 @@ namespace Aplicaciones_libreria.implementaciones
 
         public List<Descuentos> Consultar()
         {
-            return this.IConexion.Descuentos!.Take(5).ToList();
+            return this.IConexion.Descuentos!.ToList();
         }
 
         public Descuentos Insertar(Descuentos entidad)

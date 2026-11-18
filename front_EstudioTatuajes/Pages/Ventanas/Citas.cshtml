@@ -57,48 +57,56 @@
                 <br />
 
                 <label>
-                    Tatuaje (ID)
+                    Tatuaje -ZonaCuerpo
                 </label>
-                <input type="number"
-                       asp-for="@Model.Actual!.Tatuaje" />
-                <br />
-
-                <label>
-                    Consentimiento (ID)
-                </label>
-                <input type="number"
-                       asp-for="@Model.Actual!.Consentimiento" />
-                <br />
-
-                <label>
-                    Factura (ID)
-                </label>
-                <input type="number"
-                       asp-for="@Model.Actual!.Factura" />
-                <br />
-
-                <label>
-                    Sede (ID)
-                </label>
-                <input type="number"
-                       asp-for="@Model.Actual!.Sede" />
-                <br />
-
-                <label>
-                    Cliente (ID)
-                </label>
-                <select id="nmCliente"
-                        asp-for="@Model.Actual!.Cliente"
-                        asp-items="@(new SelectList(Model.Clientes, "Id", "TipoPiel"))">
+                <select id="nmTatuaje"
+                        asp-for="@Model.Actual!.Tatuaje"
+                        asp-items="@(new SelectList(Model.Tatuajes, "Id", "ZonaCuerpo"))">
                 </select>
                 <br />
 
                 <label>
-                    Tatuador (ID)
+                    Consentimiento - Firmo Si o No
+                </label>
+                <select id="nmConsentimiento"
+                        asp-for="@Model.Actual!.Consentimiento"
+                        asp-items="@(new SelectList(Model.Consentimientos, "Id", "FirmaSiNo"))">
+                </select>
+                <br />
+
+                <label>
+                    Factura -Total
+                </label>
+                <select id="nmFactura"
+                        asp-for="@Model.Actual!.Factura"
+                        asp-items="@(new SelectList(Model.Facturas, "Id", "Total"))">
+                </select>
+                <br />
+
+                <label>
+                    Sede -Nombre
+                </label>
+                <select id="nmSede"
+                        asp-for="@Model.Actual!.Sede"
+                        asp-items="@(new SelectList(Model.Sedes, "Id", "Nombre"))">
+                </select>
+                <br />
+
+                <label>
+                    Cliente -Nombre
+                </label>
+                <select id="nmCliente"
+                        asp-for="@Model.Actual!.Cliente"
+                        asp-items="@(new SelectList(Model.Clientes, "Id", "_Persona.Nombre"))">
+                </select>
+                <br />
+
+                <label>
+                    Tatuador -Nombre
                 </label>
                 <select id="nmTatuador"
                         asp-for="@Model.Actual!.Tatuador"
-                        asp-items="@(new SelectList(Model.Tatuadores, "Id","_Personas.Nombre"))">
+                        asp-items="@(new SelectList(Model.Tatuadores, "Id", "_Persona.Nombre"))">
                 </select>
                 <br />
             </div>
@@ -159,7 +167,7 @@
                                 <td>@elemento._Tatuaje.ZonaCuerpo</td>
                                 <td>@elemento._Consentimiento.FirmaSiNo</td>
                                 <td>@elemento._Factura.Total</td>
-                                <td>@elemento._Sede.Direccion</td>
+                                <td>@elemento._Sede.Nombre</td>
                                 <td>@elemento._Cliente._Persona.Nombre</td>
                                 <td>@elemento._Tatuador._Persona.Nombre</td>
                                 <td>

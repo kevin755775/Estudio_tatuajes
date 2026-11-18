@@ -54,7 +54,7 @@ namespace Aplicaciones_libreria.implementaciones
             return this.IConexion.Implementos!
                 .Include(x => x._Proveedores)
                 .Include(x => x._Sede)
-                .Take(5)
+                
                 .ToList();
         }
 

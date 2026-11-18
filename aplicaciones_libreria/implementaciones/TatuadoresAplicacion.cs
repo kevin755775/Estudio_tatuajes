@@ -56,7 +56,7 @@ namespace Aplicaciones_libreria.implementaciones
                 .Include(x => x._Portafolio)
                 .Include(x => x._Persona)
                 .Include(x => x._Sede)
-                .Take(5)
+                
                 .ToList();
         }
 

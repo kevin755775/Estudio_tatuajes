@@ -50,7 +50,7 @@ namespace Aplicaciones_libreria.implementaciones
         {
             return this.IConexion.Clientes!
                 .Include(x => x._Persona)
-                .Take(5)
+                
                 .ToList();
         }
 

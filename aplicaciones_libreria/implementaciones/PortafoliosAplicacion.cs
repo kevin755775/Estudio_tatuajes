@@ -49,7 +49,7 @@ namespace Aplicaciones_libreria.implementaciones
 
         public List<Portafolios> Consultar()
         {
-            return this.IConexion.Portafolios!.Take(5).ToList();
+            return this.IConexion.Portafolios!.ToList();
         }
 
         public Portafolios Insertar(Portafolios entidad)

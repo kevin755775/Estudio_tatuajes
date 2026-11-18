@@ -49,7 +49,7 @@ namespace Aplicaciones_libreria.implementaciones
 
         public List<Personas> Consultar()
         {
-            return this.IConexion.Personas!.Take(5).ToList();
+            return this.IConexion.Personas!.ToList();
         }
 
         public Personas Insertar(Personas entidad)

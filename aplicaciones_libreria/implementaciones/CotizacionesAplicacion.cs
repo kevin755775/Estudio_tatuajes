@@ -52,7 +52,7 @@ namespace Aplicaciones_libreria.implementaciones
             return this.IConexion.Cotizaciones!
                 .Include(x => x._Tatuador)
                 .Include(x => x._Descuento)
-                .Take(5)
+                
                 .ToList();
         }
 

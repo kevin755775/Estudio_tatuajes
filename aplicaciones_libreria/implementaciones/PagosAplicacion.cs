@@ -49,7 +49,7 @@ namespace Aplicaciones_libreria.implementaciones
 
         public List<Pagos> Consultar()
         {
-            return this.IConexion.Pagos!.Take(5).ToList();
+            return this.IConexion.Pagos!.ToList();
         }
 
         public Pagos Insertar(Pagos entidad)

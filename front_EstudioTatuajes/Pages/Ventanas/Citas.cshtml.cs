@@ -11,15 +11,27 @@ namespace front_EstudioTatuajes.Pages.Ventanas
         private IClientesPresentacion IClientesPresentacion;
         private ITatuadoresPresentacion ITatuadoresPresentacion;
         private ICitasPresentacion ICitasPresentacion;
+        private ISedesPresentacion ISedesPresentacion;
+        private IFacturasPresentacion IFacturasPresentacion;
+        private IConsentimientosPresentacion IConsentimientosPresentacion;
+        private ITatuajesPresentacion ITatuajesPresentacion;
 
-        public CitasModel(IClientesPresentacion IClientesPresentacion, ITatuadoresPresentacion ITatuadoresPresentacion, ICitasPresentacion ICitasPresentacion)
+        public CitasModel (ITatuajesPresentacion ITatuajesPresentacion, IConsentimientosPresentacion IConsentimientosPresentacion, IFacturasPresentacion IFacturasPresentacion,ISedesPresentacion ISedesPresentacion, IClientesPresentacion IClientesPresentacion, ITatuadoresPresentacion ITatuadoresPresentacion, ICitasPresentacion ICitasPresentacion)
         {
+            this.ISedesPresentacion = ISedesPresentacion;
             this.IClientesPresentacion = IClientesPresentacion;
             this.ICitasPresentacion = ICitasPresentacion;
             this.ITatuadoresPresentacion = ITatuadoresPresentacion;
+            this.IFacturasPresentacion = IFacturasPresentacion;
+            this.IConsentimientosPresentacion = IConsentimientosPresentacion;
+            this.ITatuajesPresentacion = ITatuajesPresentacion;
             this.Filtro = new Citas();
         }
         public IFormFile? FormFile { get; set; }
+        [BindProperty] public List<Tatuajes> Tatuajes { get; set; }
+        [BindProperty] public List<Consentimientos> Consentimientos { get; set; }
+        [BindProperty] public List<Facturas> Facturas { get; set; }
+        [BindProperty] public List<Sedes> Sedes { get; set; }
         [BindProperty] public List<Clientes> Clientes { get; set; }
         [BindProperty] public List<Tatuadores> Tatuadores { get; set; }
         [BindProperty] public List<Citas> Lista { get; set; }
@@ -51,6 +63,10 @@ namespace front_EstudioTatuajes.Pages.Ventanas
                 this.Actual = new Citas { FechaHora = DateTime.Now };
                 this.Tatuadores = this.ITatuadoresPresentacion.Consultar();
                 this.Clientes = this.IClientesPresentacion.Consultar();
+                this.Sedes = this.ISedesPresentacion.Consultar();
+                this.Facturas = this.IFacturasPresentacion.Consultar(); 
+                this.Consentimientos = this.IConsentimientosPresentacion.Consultar();
+                this.Tatuajes = this.ITatuajesPresentacion.Consultar();
             }
             catch (Exception ex)
             {
