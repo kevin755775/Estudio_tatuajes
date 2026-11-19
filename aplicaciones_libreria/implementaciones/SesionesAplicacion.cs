@@ -44,7 +44,7 @@ namespace Aplicaciones_libreria.implementaciones
         {
             return this.IConexion.Sesiones!
                 .Include(x => x._Tatuaje)
-                .Where(x => x.Tatuaje == entidad.Tatuaje)
+                .Where(x => x.NroSesion == entidad.NroSesion || entidad.NroSesion == 0)
                 .ToList();
         }
 

@@ -30,7 +30,7 @@ builder.Services.AddScoped<IPortafoliosPresentacion, PortafoliosPresentacion>();
 builder.Services.AddScoped<IProductosVentasPresentacion, ProductosVentasPresentacion>();
 builder.Services.AddScoped<IProveedoresPresentacion, ProveedoresPresentacion>();
 builder.Services.AddScoped<ISedesPresentacion, SedesPresentacion>();
-//builder.Services.AddScoped<ISesionesPresentacion, SesionesPresentacion>();
+builder.Services.AddScoped<ISesionesPresentacion, SesionesPresentacion>();
 builder.Services.AddScoped<ITatuadoresPresentacion, TatuadoresPresentacion>();
 builder.Services.AddScoped<ITatuajesPresentacion, TatuajesPresentacion>();
 
