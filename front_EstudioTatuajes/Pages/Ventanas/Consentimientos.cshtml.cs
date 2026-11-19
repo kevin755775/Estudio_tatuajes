@@ -36,6 +36,7 @@ namespace front_EstudioTatuajes.Pages.Ventanas
         {
             try
             {
+                
                 Filtro!.Observaciones = Filtro!.Observaciones ?? "";
                 Lista = this.IConsentimientosPresentacion.Buscar(Filtro!);
             }
@@ -49,6 +50,8 @@ namespace front_EstudioTatuajes.Pages.Ventanas
         {
             try
             {
+
+                this.Actual = new Consentimientos { FechaFirma = DateTime.Now };
                 Formulario = true;
                 this.Actual = new Consentimientos();
                 

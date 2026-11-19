@@ -68,6 +68,9 @@ namespace Aplicaciones_libreria.implementaciones
         private bool Validar(Proveedores entidad)
         {
             return string.IsNullOrEmpty(entidad.NombreEmpresa) ||
+                string.IsNullOrEmpty(entidad.Direccion) ||
+                string.IsNullOrEmpty(entidad.Correo) ||
+                string.IsNullOrEmpty(entidad.Tipo) ||
                    string.IsNullOrEmpty(entidad.Telefono);
         }
     }

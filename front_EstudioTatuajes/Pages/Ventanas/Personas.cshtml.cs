@@ -49,6 +49,7 @@ namespace front_EstudioTatuajes.Pages.Ventanas
         {
             try
             {
+                this.Actual = new Personas { FechaNac = DateTime.Now };
                 Formulario = true;
                 this.Actual = new Personas();
 

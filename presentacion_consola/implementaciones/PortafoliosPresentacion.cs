@@ -76,7 +76,8 @@ namespace Aplicaciones_libreria.implementaciones
 
         private bool Validar(Portafolios entidad)
         {
-            return string.IsNullOrEmpty(entidad.Titulo);
+            return string.IsNullOrEmpty(entidad.Descripcion) ||
+            string.IsNullOrEmpty(entidad.Titulo);
         }
     }
 }

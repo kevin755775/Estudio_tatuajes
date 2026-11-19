@@ -74,6 +74,7 @@ namespace Aplicaciones_libreria.implementaciones
         private bool Validar(ProductosVentas entidad)
         {
             return string.IsNullOrEmpty(entidad.Nombre) ||
+                string.IsNullOrEmpty(entidad.Marca) ||
                    entidad.Precio <= 0 ||
                    entidad.Proveedores == 0 ||
                    entidad.Sede == 0;

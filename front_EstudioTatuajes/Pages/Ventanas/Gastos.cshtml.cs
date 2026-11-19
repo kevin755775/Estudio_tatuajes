@@ -49,6 +49,7 @@ namespace front_EstudioTatuajes.Pages.Ventanas
         {
             try
             {
+                this.Actual = new Gastos { Fecha = DateTime.Now };
                 Formulario = true;
                 this.Actual = new Gastos();
                 this.Sedes = this.ISedesPresentacion.Consultar();

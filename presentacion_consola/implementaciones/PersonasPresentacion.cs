@@ -77,6 +77,8 @@ namespace Aplicaciones_libreria.implementaciones
         private bool Validar(Personas entidad)
         {
             return string.IsNullOrEmpty(entidad.Nombre) ||
+                string.IsNullOrEmpty(entidad.Telefono) ||
+                string.IsNullOrEmpty(entidad.Correo) ||
                    string.IsNullOrEmpty(entidad.NroDoc);
         }
     }

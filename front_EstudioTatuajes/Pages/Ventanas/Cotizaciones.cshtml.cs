@@ -52,6 +52,7 @@ namespace front_EstudioTatuajes.Pages.Ventanas
         {
             try
             {
+                this.Actual = new Cotizaciones { FechaEmision = DateTime.Now };
                 Formulario = true;
                 this.Actual = new Cotizaciones();
                 this.Tatuadores = this.ITatuadoresPresentacion.Consultar();
@@ -68,6 +69,7 @@ namespace front_EstudioTatuajes.Pages.Ventanas
         {
             try
             {
+               
                 if (this.Actual!.Id == 0)
                     this.Actual = this.ICotizacionesPresentacion.Insertar(this.Actual!);
                 else

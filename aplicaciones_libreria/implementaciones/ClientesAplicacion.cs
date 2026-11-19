@@ -70,6 +70,7 @@ namespace Aplicaciones_libreria.implementaciones
         private bool Validar(Clientes entidad)
         {
             return string.IsNullOrEmpty(entidad.TipoPiel) ||
+                string.IsNullOrEmpty(entidad.Alergias) ||
                    entidad.Persona == 0;
         }
     }

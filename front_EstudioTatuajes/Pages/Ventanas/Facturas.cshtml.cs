@@ -36,7 +36,8 @@ namespace front_EstudioTatuajes.Pages.Ventanas
         {
             try
             {
-                Filtro!.Total = Filtro!.Total;
+
+                
                 Lista = this.IFacturasPresentacion.Buscar(Filtro!);
             }
             catch (Exception ex)
@@ -49,6 +50,8 @@ namespace front_EstudioTatuajes.Pages.Ventanas
         {
             try
             {
+                this.Actual = new Facturas { Fecha = DateTime.Now };
+                this.Actual = new Facturas { Hora = DateTime.Now };
                 Formulario = true;
                 this.Actual = new Facturas();
                 this.Pagos = this.IPagosPresentacion.Consultar();

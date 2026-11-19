@@ -43,6 +43,7 @@ namespace front_EstudioTatuajes.Pages.Ventanas
         {
             try
             {
+                this.Actual = new Sesiones { FechaInicio = DateTime.Now };
                 Formulario = true;
                 this.Actual = new Sesiones();
                 this.Tatuajes = this.ITatuajesPresentacion.Consultar();

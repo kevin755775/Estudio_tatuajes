@@ -77,6 +77,7 @@ namespace Aplicaciones_libreria.implementaciones
         private bool Validar(EstilosTatuajes entidad)
         {
             return string.IsNullOrEmpty(entidad.Nombre) ||
+                string.IsNullOrEmpty(entidad.Descripcion) ||
                    string.IsNullOrEmpty(entidad.NivelDificultad);
         }
     }

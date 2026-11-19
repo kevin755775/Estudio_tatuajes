@@ -76,9 +76,10 @@ namespace Aplicaciones_libreria.implementaciones
         private bool Validar(Tatuadores entidad)
         {
             return string.IsNullOrEmpty(entidad.Licencia) ||
+                string.IsNullOrEmpty(entidad.Especialidad) ||
                    entidad.Portafolio == 0 ||
                    entidad.Persona == 0 ||
-                   entidad.Sede == 0;
+                    entidad.Sede == 0;
         }
     }
 }

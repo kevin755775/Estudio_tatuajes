@@ -77,6 +77,8 @@ namespace Aplicaciones_libreria.implementaciones
         private bool Validar(Sedes entidad)
         {
             return string.IsNullOrEmpty(entidad.Nombre) ||
+                string.IsNullOrEmpty(entidad.Direccion) ||
+                string.IsNullOrEmpty(entidad.Telefono) ||
                    string.IsNullOrEmpty(entidad.Ciudad);
         }
     }

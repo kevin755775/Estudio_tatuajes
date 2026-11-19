@@ -77,7 +77,8 @@ namespace Aplicaciones_libreria.implementaciones
         private bool Validar(Pagos entidad)
         {
             return string.IsNullOrEmpty(entidad.MetodoPago) ||
-                   entidad.Valor <= 0;
+                 string.IsNullOrEmpty(entidad.Referencia) ||
+                    entidad.Valor <= 0;
         }
     }
 }
