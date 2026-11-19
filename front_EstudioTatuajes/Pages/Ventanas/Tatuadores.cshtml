@@ -1,0 +1,170 @@
+﻿@page
+@model TatuadoresModel
+@{
+    ViewData["Title"] = "Tatuadores";
+}
+<form method="post"
+      enctype="multipart/form-data">
+
+    <div class="text-center">
+        <h1 class="display-4">Tatuadores</h1>
+        <div>
+            <input type="submit"
+                   value="Consultar"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtConsultar" />
+            <input type="submit"
+                   value="Nuevo"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtNuevo" />
+            <input type="submit"
+                   value="Guardar"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtGuardar" />
+            <input id="flLicencia"
+                   placeholder="Licencia"
+                   asp-for="@Model.Filtro!.Licencia" />
+        </div>
+
+        @if (ViewData.ContainsKey("Mensaje"))
+        {
+            @await Html.PartialAsync("../Emergentes/Mensajes.cshtml")
+            ;
+        }
+
+        @if (Model.Formulario || Model.Borrar)
+        {
+            <input type="hidden"
+                   asp-for="@Model.Actual!.Id" />
+        }
+
+        @if (Model.Formulario)
+        {
+            <div>
+                <h3>Tatuadores</h3>
+
+                <label>
+                    Licencia
+                </label>
+                <input asp-for="@Model.Actual!.Licencia" />
+                <br />
+
+                <label>
+                    Años Experiencia
+                </label>
+                <input asp-for="@Model.Actual!.AnExperiencia" />
+                <br />
+
+                <label>
+                    Especialidad
+                </label>
+                <input asp-for="@Model.Actual!.Especialidad" />
+                <br />
+
+                <label>
+                    Portafolio -Titulo
+                </label>
+                <select id="nmPortafolio"
+                        asp-for="@Model.Actual!.Portafolio"
+                        asp-items="@(new SelectList(Model.Portafolios, "Id", "Titulo"))">
+                </select>
+                <br />
+
+                <label>
+                    Persona -Nombre
+                </label>
+                <select id="nmPersona"
+                        asp-for="@Model.Actual!.Persona"
+                        asp-items="@(new SelectList(Model.Personas, "Id", "Nombre"))">
+                </select>
+                <br />
+
+                <label>
+                    Sede -Nombre
+                </label>
+                <select id="nmSede"
+                        asp-for="@Model.Actual!.Sede"
+                        asp-items="@(new SelectList(Model.Sedes, "Id", "Nombre"))">
+                </select>
+                <br />
+
+                
+            </div>
+        }
+
+        @if (Model.Borrar)
+        {
+            <div class="popup">
+                <div class="pp_del_inner">
+                    <h3>
+                        Mensaje
+                    </h3>
+
+                    <h4>
+                        ¿Quiere borrar el Tatuador con información ID:
+                        @Model.Actual!.Id,
+                        Licencia @Model.Actual!.Licencia,
+                        Especialidad @Model.Actual!.Especialidad?
+                    </h4>
+                    <input type="submit"
+                           value="Cancelar"
+                           class="btn btn-secondary"
+                           asp-page-handler="BtConsultar" />
+                    <input type="submit"
+                           value="Borrar"
+                           class="btn btn-secondary"
+                           asp-page-handler="BtBorrar" />
+                </div>
+            </div>
+        }
+
+        @if (!Model.Formulario)
+        {
+            <br />
+            <br />
+            <div class="containers_vn panel panel-default">
+                <table class="tb_data table table-striped table-bordered table-hover">
+                    <tr>
+                        <th>ID</th>
+                        <th>Licencia </th>
+                        <th>AnExperiencia</th>
+                        <th>Especialidad</th>
+                        <th>Portafolio</th>
+                        <th>Persona</th>
+                        <th>Sede</th>
+                        <th>Acción</th>
+                    </tr>
+                    @if (Model != null && Model.Lista != null)
+                    {
+                        foreach (var elemento in Model.Lista)
+                        {
+                            <tr>
+                                <td>@elemento.Id</td>
+                                <td>@elemento.Licencia</td>
+                                <td>@elemento.AnExperiencia</td>
+                                <td>@elemento.Especialidad</td>
+                                <td>@elemento._Portafolio.Titulo</td>
+                                <td>@elemento._Persona.Nombre</td>
+                                <td>@elemento._Sede.Nombre</td>
+
+                                <td>
+                                    <input type="submit"
+                                           value="Editar"
+                                           class="btn btn-secondary"
+                                           asp-page-handler="BtEditar"
+                                           asp-route-data="@elemento.Id" />
+                                    <input type="submit"
+                                           value="Borrar"
+                                           class="btn btn-secondary"
+                                           asp-page-handler="BtPregBorrar"
+                                           asp-route-data="@elemento.Id" />
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        }
+
+    </div>
+</form>
