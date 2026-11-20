@@ -26,6 +26,7 @@ namespace Aplicaciones_libreria.implementaciones
 
             var entry = this.IConexion!.Entry<Portafolios>(entidad);
             entry.State = EntityState.Modified;
+            if (entidad.ImagenPortafolios == null) entry.Property(x => x.ImagenPortafolios).IsModified = false;
             this.IConexion.Auditorias!.Add(
            new Auditorias()
            {

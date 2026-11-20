@@ -26,6 +26,7 @@ namespace Aplicaciones_libreria.implementaciones
 
             var entry = this.IConexion!.Entry<Personas>(entidad);
             entry.State = EntityState.Modified;
+            if (entidad.ImagenPersonas == null) entry.Property(x => x.ImagenPersonas).IsModified = false;
             this.IConexion.Auditorias!.Add(
            new Auditorias()
            {

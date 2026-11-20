@@ -26,6 +26,7 @@ namespace Aplicaciones_libreria.implementaciones
 
             var entry = this.IConexion!.Entry<Tatuajes>(entidad);
             entry.State = EntityState.Modified;
+            if (entidad.ImagenTatuajes == null) entry.Property(x => x.ImagenTatuajes).IsModified = false;
             this.IConexion.Auditorias!.Add(
            new Auditorias()
            {

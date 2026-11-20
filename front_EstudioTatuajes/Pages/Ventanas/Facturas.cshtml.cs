@@ -50,7 +50,7 @@ namespace front_EstudioTatuajes.Pages.Ventanas
         {
             try
             {
-                this.Actual = new Facturas { Fecha = DateTime.Now };
+                
                 this.Actual = new Facturas { Hora = DateTime.Now };
                 Formulario = true;
                 this.Actual = new Facturas();

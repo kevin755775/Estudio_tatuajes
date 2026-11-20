@@ -62,6 +62,15 @@ namespace front_EstudioTatuajes.Pages.Ventanas
         {
             try
             {
+                if (FormFile != null)
+                {
+                    if (FormFile.Length > 500 * 1024)
+                        throw new Exception("La imagen no puede superar 500 KB");
+                    var memoryStream = new MemoryStream();
+                    FormFile.CopyToAsync(memoryStream).Wait();
+                    Actual!.ImagenProductosVentas = Convert.ToBase64String(memoryStream.ToArray());
+                    memoryStream.Dispose();
+                }
                 if (this.Actual!.Id == 0)
                     this.Actual = this.IProductosVentasPresentacion.Insertar(this.Actual!);
                 else
