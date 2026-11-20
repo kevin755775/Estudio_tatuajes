@@ -13,6 +13,13 @@ CREATE TABLE [Auditorias] (
     [Fecha] DATETIME NOT NULL
 );
 
+CREATE TABLE [Roles] (
+    [Id] INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
+    [Tipo] NVARCHAR(100) NOT NULL,
+    [Descripcion] NVARCHAR(200) NOT NULL,
+    [Activo] BIT NOT NULL
+);
+
 CREATE TABLE [Personas] (
     [Id] INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
     [Nombre] NVARCHAR(200) NOT NULL,
