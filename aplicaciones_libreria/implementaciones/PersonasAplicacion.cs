@@ -26,6 +26,14 @@ namespace Aplicaciones_libreria.implementaciones
 
             var entry = this.IConexion!.Entry<Personas>(entidad);
             entry.State = EntityState.Modified;
+            this.IConexion.Auditorias!.Add(
+           new Auditorias()
+           {
+               Entidad = "Personas",
+               Accion = "Actualizar",   // Actualizar / Borrar
+               Descripcion = "Se actualizo una Persona",
+               Fecha = DateTime.Now
+           });
             this.IConexion!.SaveChanges();
             return entidad;
         }
@@ -36,6 +44,14 @@ namespace Aplicaciones_libreria.implementaciones
                 throw new Exception("No se ha guardo");
 
             this.IConexion.Personas!.Remove(entidad!);
+            this.IConexion.Auditorias!.Add(
+           new Auditorias()
+           {
+               Entidad = "Personas",
+               Accion = "Borrar",   // Actualizar / Borrar
+               Descripcion = "Se Borro una Persona",
+               Fecha = DateTime.Now
+           });
             this.IConexion.SaveChanges();
             return entidad;
         }
@@ -61,6 +77,14 @@ namespace Aplicaciones_libreria.implementaciones
                 throw new Exception("Falta informacion");
 
             this.IConexion.Personas!.Add(entidad!);
+            this.IConexion.Auditorias!.Add(
+                new Auditorias()
+                {
+                    Entidad = "Personas",
+                    Accion = "Insertar",   // Actualizar / Borrar
+                    Descripcion = "Se inserto una Persona",
+                    Fecha = DateTime.Now
+                });
             this.IConexion.SaveChanges();
             return entidad;
         }

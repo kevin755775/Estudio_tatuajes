@@ -26,6 +26,14 @@ namespace Aplicaciones_libreria.implementaciones
 
             var entry = this.IConexion!.Entry<Implementos>(entidad);
             entry.State = EntityState.Modified;
+            this.IConexion.Auditorias!.Add(
+           new Auditorias()
+           {
+               Entidad = "Implementos",
+               Accion = "Actualizar",   // Actualizar / Borrar
+               Descripcion = "Se actualizo un Implemento",
+               Fecha = DateTime.Now
+           });
             this.IConexion!.SaveChanges();
             return entidad;
         }
@@ -36,6 +44,14 @@ namespace Aplicaciones_libreria.implementaciones
                 throw new Exception("No se ha guardo");
 
             this.IConexion.Implementos!.Remove(entidad!);
+            this.IConexion.Auditorias!.Add(
+           new Auditorias()
+           {
+               Entidad = "Implementos",
+               Accion = "Borrar",   // Actualizar / Borrar
+               Descripcion = "Se Borro un Implemento",
+               Fecha = DateTime.Now
+           });
             this.IConexion.SaveChanges();
             return entidad;
         }
@@ -67,6 +83,14 @@ namespace Aplicaciones_libreria.implementaciones
                 throw new Exception("Falta informacion");
 
             this.IConexion.Implementos!.Add(entidad!);
+            this.IConexion.Auditorias!.Add(
+                new Auditorias()
+                {
+                    Entidad = "Implementos",
+                    Accion = "Insertar",   // Actualizar / Borrar
+                    Descripcion = "Se inserto un Implemento",
+                    Fecha = DateTime.Now
+                });
             this.IConexion.SaveChanges();
             return entidad;
         }

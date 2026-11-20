@@ -30,6 +30,7 @@ namespace Aplicaciones_libreria.interfaces
         DbSet<Implementos>? Implementos { get; set; }
         DbSet<DetallesFacturas>? DetallesFacturas { get; set; }
 
+        DbSet<Auditorias>? Auditorias { get; set; }
         EntityEntry<T> Entry<T>(T entity) where T : class;
         int SaveChanges();
     }

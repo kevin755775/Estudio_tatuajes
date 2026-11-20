@@ -24,6 +24,14 @@ namespace Aplicaciones_libreria.implementaciones
 
             var entry = this.IConexion!.Entry<Consentimientos>(entidad);
             entry.State = EntityState.Modified;
+            this.IConexion.Auditorias!.Add(
+           new Auditorias()
+           {
+               Entidad = "Consentimientos",
+               Accion = "Actualizar",   // Actualizar / Borrar
+               Descripcion = "Se actualizo un Consentimiento",
+               Fecha = DateTime.Now
+           });
             this.IConexion!.SaveChanges();
             return entidad;
         }
@@ -34,6 +42,14 @@ namespace Aplicaciones_libreria.implementaciones
                 throw new Exception("No se ha guardado");
 
             this.IConexion.Consentimientos!.Remove(entidad!);
+            this.IConexion.Auditorias!.Add(
+           new Auditorias()
+           {
+               Entidad = "Consentimientos",
+               Accion = "Borrar",   // Actualizar / Borrar
+               Descripcion = "Se Borro un Consentimiento",
+               Fecha = DateTime.Now
+           });
             this.IConexion.SaveChanges();
             return entidad;
         }
@@ -59,6 +75,14 @@ namespace Aplicaciones_libreria.implementaciones
                 throw new Exception("Falta informacion");
 
             this.IConexion.Consentimientos!.Add(entidad!);
+            this.IConexion.Auditorias!.Add(
+                new Auditorias()
+                {
+                    Entidad = "Consentimientos",
+                    Accion = "Insertar",   // Actualizar / Borrar
+                    Descripcion = "Se inserto un Consentimiento",
+                    Fecha = DateTime.Now
+                });
             this.IConexion.SaveChanges();
             return entidad;
         }

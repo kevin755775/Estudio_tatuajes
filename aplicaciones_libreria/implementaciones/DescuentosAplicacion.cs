@@ -24,6 +24,14 @@ namespace Aplicaciones_libreria.implementaciones
 
             var entry = this.IConexion!.Entry<Descuentos>(entidad);
             entry.State = EntityState.Modified;
+            this.IConexion.Auditorias!.Add(
+           new Auditorias()
+           {
+               Entidad = "Descuentos",
+               Accion = "Actualizar",   // Actualizar / Borrar
+               Descripcion = "Se actualizo un Descuento",
+               Fecha = DateTime.Now
+           });
             this.IConexion!.SaveChanges();
             return entidad;
         }
@@ -34,6 +42,14 @@ namespace Aplicaciones_libreria.implementaciones
                 throw new Exception("No se ha guardado");
 
             this.IConexion.Descuentos!.Remove(entidad!);
+            this.IConexion.Auditorias!.Add(
+           new Auditorias()
+           {
+               Entidad = "Descuentos",
+               Accion = "Borrar",   // Actualizar / Borrar
+               Descripcion = "Se Borro un Descuento",
+               Fecha = DateTime.Now
+           });
             this.IConexion.SaveChanges();
             return entidad;
         }
@@ -59,6 +75,14 @@ namespace Aplicaciones_libreria.implementaciones
                 throw new Exception("Falta informacion");
 
             this.IConexion.Descuentos!.Add(entidad!);
+            this.IConexion.Auditorias!.Add(
+                new Auditorias()
+                {
+                    Entidad = "Descuentos",
+                    Accion = "Insertar",   // Actualizar / Borrar
+                    Descripcion = "Se inserto un Descuento",
+                    Fecha = DateTime.Now
+                });
             this.IConexion.SaveChanges();
             return entidad;
         }

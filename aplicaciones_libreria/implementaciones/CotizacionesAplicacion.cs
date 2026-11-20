@@ -24,6 +24,14 @@ namespace Aplicaciones_libreria.implementaciones
 
             var entry = this.IConexion!.Entry<Cotizaciones>(entidad);
             entry.State = EntityState.Modified;
+            this.IConexion.Auditorias!.Add(
+           new Auditorias()
+           {
+               Entidad = "Cotizaciones",
+               Accion = "Actualizar",   // Actualizar / Borrar
+               Descripcion = "Se actualizo un Cotizacion",
+               Fecha = DateTime.Now
+           });
             this.IConexion!.SaveChanges();
             return entidad;
         }
@@ -34,6 +42,14 @@ namespace Aplicaciones_libreria.implementaciones
                 throw new Exception("No se ha guardado");
 
             this.IConexion.Cotizaciones!.Remove(entidad!);
+            this.IConexion.Auditorias!.Add(
+           new Auditorias()
+           {
+               Entidad = "Cotizaciones",
+               Accion = "Borrar",   // Actualizar / Borrar
+               Descripcion = "Se Borro una Cotizacion",
+               Fecha = DateTime.Now
+           });
             this.IConexion.SaveChanges();
             return entidad;
         }
@@ -67,6 +83,14 @@ namespace Aplicaciones_libreria.implementaciones
                 throw new Exception("Falta informacion");
 
             this.IConexion.Cotizaciones!.Add(entidad!);
+            this.IConexion.Auditorias!.Add(
+                new Auditorias()
+                {
+                    Entidad = "Cotizaciones",
+                    Accion = "Insertar",   // Actualizar / Borrar
+                    Descripcion = "Se inserto una Cotizacion",
+                    Fecha = DateTime.Now
+                });
             this.IConexion.SaveChanges();
             return entidad;
         }

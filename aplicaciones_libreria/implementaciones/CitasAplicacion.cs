@@ -24,6 +24,14 @@ namespace Aplicaciones_libreria.implementaciones
 
             var entry = this.IConexion!.Entry<Citas>(entidad);
             entry.State = EntityState.Modified;
+            this.IConexion.Auditorias!.Add(
+            new Auditorias()
+            {
+                Entidad = "Citas",
+                Accion = "Actualizar",   // Actualizar / Borrar
+                Descripcion = "Se actualizo una cita",
+                Fecha = DateTime.Now
+            });
             this.IConexion!.SaveChanges();
             return entidad;
         }
@@ -34,6 +42,14 @@ namespace Aplicaciones_libreria.implementaciones
                 throw new Exception("No se ha guardado");
 
             this.IConexion.Citas!.Remove(entidad!);
+            this.IConexion.Auditorias!.Add(
+            new Auditorias()
+            {
+                Entidad = "Citas",
+                Accion = "Borrar",   // Actualizar / Borrar
+                Descripcion = "Se Borro una cita",
+                Fecha = DateTime.Now
+            });
             this.IConexion.SaveChanges();
             return entidad;
         }
@@ -79,6 +95,14 @@ namespace Aplicaciones_libreria.implementaciones
                 throw new Exception("Falta informacion");
 
             this.IConexion.Citas!.Add(entidad!);
+            this.IConexion.Auditorias!.Add(
+                new Auditorias()
+             {
+                Entidad = "Citas",
+                Accion = "Insertar",   // Actualizar / Borrar
+                Descripcion = "Se inserto una cita",
+                Fecha = DateTime.Now
+            });
             this.IConexion.SaveChanges();
             return entidad;
         }

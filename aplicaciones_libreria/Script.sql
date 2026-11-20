@@ -5,6 +5,13 @@ GO
 USE estudio_tatuajes_db;
 GO
 
+CREATE TABLE [Auditorias] (
+    [Id] INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
+    [Entidad] NVARCHAR(50) NOT NULL,
+    [Accion] NVARCHAR(20) NOT NULL,
+    [Descripcion] NVARCHAR(500) NOT NULL,
+    [Fecha] DATETIME NOT NULL
+);
 
 CREATE TABLE [Personas] (
     [Id] INT NOT NULL PRIMARY KEY IDENTITY(1, 1),

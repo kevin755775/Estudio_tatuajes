@@ -26,6 +26,14 @@ namespace Aplicaciones_libreria.implementaciones
 
             var entry = this.IConexion!.Entry<EstilosTatuajes>(entidad);
             entry.State = EntityState.Modified;
+            this.IConexion.Auditorias!.Add(
+           new Auditorias()
+           {
+               Entidad = "EstilosTatuajes",
+               Accion = "Actualizar",   // Actualizar / Borrar
+               Descripcion = "Se actualizo un EstilosTatuaje",
+               Fecha = DateTime.Now
+           });
             this.IConexion!.SaveChanges();
             return entidad;
         }
@@ -36,6 +44,14 @@ namespace Aplicaciones_libreria.implementaciones
                 throw new Exception("No se ha guardo");
 
             this.IConexion.EstilosTatuajes!.Remove(entidad!);
+            this.IConexion.Auditorias!.Add(
+           new Auditorias()
+           {
+               Entidad = "EstilosTatuajes",
+               Accion = "Borrar",   // Actualizar / Borrar
+               Descripcion = "Se Borro un EstilosTatuaje",
+               Fecha = DateTime.Now
+           });
             this.IConexion.SaveChanges();
             return entidad;
         }
@@ -61,6 +77,14 @@ namespace Aplicaciones_libreria.implementaciones
                 throw new Exception("Falta informacion");
 
             this.IConexion.EstilosTatuajes!.Add(entidad!);
+            this.IConexion.Auditorias!.Add(
+                new Auditorias()
+                {
+                    Entidad = "EstilosTatuajes",
+                    Accion = "Insertar",   // Actualizar / Borrar
+                    Descripcion = "Se inserto un EstilosTatuaje",
+                    Fecha = DateTime.Now
+                });
             this.IConexion.SaveChanges();
             return entidad;
         }
