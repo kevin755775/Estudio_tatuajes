@@ -12,6 +12,7 @@ namespace Aplicaciones_libreria.entidades
         public string? Telefono { get; set; }
         public string? Correo { get; set; }
         public DateTime FechaNac { get; set; }
+        public string? ImagenPersonas { get; set; }
 
         public List<Clientes>? Clientes { get; set; }
         public List<Empleados>? Empleados { get; set; }

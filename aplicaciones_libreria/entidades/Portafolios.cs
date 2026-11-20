@@ -11,6 +11,7 @@ namespace Aplicaciones_libreria.entidades
         public string? Descripcion { get; set; }
         public DateTime FechaUltAct { get; set; }
         public int TotalDisenos { get; set; }
+        public string? ImagenPortafolios { get; set; }
 
         public List<Tatuadores>? Tatuadores { get; set; }
     }

@@ -14,6 +14,7 @@ namespace Aplicaciones_libreria.entidades
         public string? Marca { get; set; }
         public int Proveedores { get; set; }
         public int Sede { get; set; }
+        public string? ImagenProductosVentas { get; set; }
 
         [ForeignKey("Proveedores")] public Proveedores? _Proveedores { get; set; }
         [ForeignKey("Sede")] public Sedes? _Sede { get; set; }

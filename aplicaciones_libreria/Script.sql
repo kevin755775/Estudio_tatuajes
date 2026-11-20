@@ -26,6 +26,7 @@ CREATE TABLE [Personas] (
     [NroDoc] NVARCHAR(50) NOT NULL UNIQUE,
     [Telefono] NVARCHAR(50) NOT NULL,
     [Correo] NVARCHAR(100) NOT NULL,
+    [ImagenPersonas] NVARCHAR(MAX) NULL,
     [FechaNac] SMALLDATETIME NOT NULL
 );
 
@@ -42,6 +43,7 @@ CREATE TABLE [Portafolios] (
     [Titulo] NVARCHAR(200) NOT NULL,
     [Descripcion] NVARCHAR(500) NOT NULL,
     [FechaUltAct] SMALLDATETIME NOT NULL,
+    [ImagenPortafolios] NVARCHAR(MAX) NULL,
     [TotalDisenos] INT NOT NULL
 );
 
@@ -135,6 +137,7 @@ CREATE TABLE [Tatuajes] (
     [Ancho] DECIMAL(10, 2) NOT NULL,
     [Alto] DECIMAL(10, 2) NOT NULL,
     [Color] BIT NOT NULL,
+    [ImagenTatuajes] NVARCHAR(MAX) NULL,
     [EstiloTatuaje] INT NOT NULL REFERENCES [EstilosTatuajes]([Id])
 );
 
@@ -161,6 +164,7 @@ CREATE TABLE [ProductosVentas] (
     [Precio] DECIMAL(10, 2) NOT NULL,
     [Stock] INT NOT NULL,
     [Marca] NVARCHAR(100) NOT NULL,
+    [ImagenProductosVentas] NVARCHAR(MAX) NULL,
     [Proveedores] INT NOT NULL REFERENCES [Proveedores]([Id]),
     [Sede] INT NOT NULL REFERENCES [Sedes]([Id])
 );
@@ -171,6 +175,7 @@ CREATE TABLE [Implementos] (
     [Precio] DECIMAL(10, 2) NOT NULL,
     [Stock] INT NOT NULL,
     [Marca] NVARCHAR(100) NOT NULL,
+    [ImagenImplementos] NVARCHAR(MAX) NULL,
     [Proveedores] INT NOT NULL REFERENCES [Proveedores]([Id]),
     [Sede] INT NOT NULL REFERENCES [Sedes]([Id])
 );

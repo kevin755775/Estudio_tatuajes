@@ -72,7 +72,20 @@
                 </label>
                 <input asp-for="@Model.Actual!.FechaNac" />
                 <br />
-
+                <label>
+                    Imagen Personas
+                </label>
+                @if (Model.Actual!.ImagenPersonas != null)
+                {
+                    <img height="100"
+                         width="100"
+                         src="data:image;base64,
+                    @System.Convert.ToBase64String(
+                    Convert.FromBase64String(
+                    Model.Actual!.ImagenPersonas))" />
+                }
+                <input type="file"
+                       asp-for="FormFile" />
                 
 
             </div>
@@ -117,6 +130,7 @@
                         <th>Telefono</th>
                         <th>Correo</th>
                         <th>FechaNac</th>
+                        <th>ImagenPersonas</th>
 
 
                         <th>Acción</th>
@@ -133,6 +147,16 @@
                                 <td>@elemento.Correo</td>
                                 <td>@elemento.FechaNac</td>
 
+                                <td>
+                                    @if (elemento.ImagenPersonas != null)
+                                    {
+                                        <img height="60"
+                                             width="60"
+                                             src="data:image;base64,
+                                        @System.Convert.ToBase64String(
+                                        Convert.FromBase64String(elemento.ImagenPersonas))" />
+                                    }
+                                </td>
                                 <td>
                                     <input type="submit"
                                            value="Editar"

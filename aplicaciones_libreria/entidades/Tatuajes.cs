@@ -13,6 +13,8 @@ namespace Aplicaciones_libreria.entidades
         public decimal Alto { get; set; }
         public bool Color { get; set; }
         public int EstiloTatuaje { get; set; }
+        public string? ImagenTatuajes { get; set; }
+
 
         [ForeignKey("EstiloTatuaje")] public EstilosTatuajes? _EstiloTatuaje { get; set; }
         public List<Sesiones>? Sesiones { get; set; }
