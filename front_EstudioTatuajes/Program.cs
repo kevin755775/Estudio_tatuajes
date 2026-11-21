@@ -1,4 +1,3 @@
-
 using presentacion_consola.implementaciones;
 using presentacion_consola.interfaces;
 using Aplicaciones_libreria.interfaces;
@@ -10,6 +9,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
 builder.Services.AddControllers();
+
+// Sesion (igual que en el proyecto horarios)
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 
 
 builder.Services.AddScoped<IComunicaciones, Comunicaciones>();
@@ -33,6 +41,9 @@ builder.Services.AddScoped<ISedesPresentacion, SedesPresentacion>();
 builder.Services.AddScoped<ISesionesPresentacion, SesionesPresentacion>();
 builder.Services.AddScoped<ITatuadoresPresentacion, TatuadoresPresentacion>();
 builder.Services.AddScoped<ITatuajesPresentacion, TatuajesPresentacion>();
+builder.Services.AddScoped<IRolesPresentacion, RolesPresentacion>();
+builder.Services.AddScoped<IUsuariosPresentacion, UsuariosPresentacion>();
+builder.Services.AddScoped<IAuditoriasPresentacion, AuditoriasPresentacion>();
 
 var app = builder.Build();
 
@@ -45,6 +56,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseRouting();
+app.UseSession();
 app.UseAuthorization();
 
 app.MapStaticAssets();

@@ -20,6 +20,7 @@ CREATE TABLE [Roles] (
     [Activo] BIT NOT NULL
 );
 
+
 CREATE TABLE [Personas] (
     [Id] INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
     [Nombre] NVARCHAR(200) NOT NULL,
@@ -29,7 +30,14 @@ CREATE TABLE [Personas] (
     [ImagenPersonas] NVARCHAR(MAX) NULL,
     [FechaNac] SMALLDATETIME NOT NULL
 );
-
+CREATE TABLE [Usuarios] (
+    [Id] INT PRIMARY KEY IDENTITY(1,1),
+    [Email] NVARCHAR(100) NOT NULL UNIQUE,
+    [Clave] NVARCHAR(200) NOT NULL,
+    [Rol] INT NOT NULL REFERENCES [Roles]([Id]),
+    [Persona] INT NOT NULL REFERENCES [Personas]([Id]),
+    [Activo] BIT NOT NULL
+);
 CREATE TABLE [Sedes] (
     [Id] INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
     [Nombre] NVARCHAR(100) NOT NULL,
@@ -370,5 +378,14 @@ VALUES
 (1, 45000.00, 45000.00, 2, 3),
 (2, 28000.00, 56000.00, 3, 4),
 (1, 60000.00, 60000.00, 5, 5);
+INSERT INTO [Roles] ([Tipo], [Descripcion], [Activo])
+VALUES
+('Administrador', 'Acceso total', 1),
+('Recepcionista', 'Citas y facturacion', 1),
+('Tatuador', 'Citas, sesiones y portafolio', 1);
+
+INSERT INTO [Usuarios] ([Email], [Clave], [Rol], [Persona], [Activo])
+VALUES ('admin@estudio.com', 'Admin.2026', 1, 1, 1);
+
 
 */

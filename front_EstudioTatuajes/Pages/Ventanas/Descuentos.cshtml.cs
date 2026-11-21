@@ -30,6 +30,11 @@ namespace front_EstudioTatuajes.Pages.Ventanas
         {
             try
             {
+                if (String.IsNullOrEmpty(HttpContext.Session.GetString("Usuario")))
+                {
+                    HttpContext.Response.Redirect("/");
+                    return;
+                }
                 Lista = this.IDescuentosPresentacion.Buscar(Filtro!);
             }
             catch (Exception ex)

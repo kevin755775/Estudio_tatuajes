@@ -37,5 +37,7 @@ namespace Aplicaciones_libreria.implementaciones
         public DbSet<Implementos>? Implementos { get; set; }
         public DbSet<DetallesFacturas>? DetallesFacturas { get; set; }
         public DbSet<Auditorias>? Auditorias { get; set; }
+        public DbSet<Roles>? Roles { get; set; }
+        public DbSet<Usuarios>? Usuarios { get; set; }
     }
 }

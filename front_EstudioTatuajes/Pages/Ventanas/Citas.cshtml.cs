@@ -46,6 +46,11 @@ namespace front_EstudioTatuajes.Pages.Ventanas
         {
             try
             {
+                if (String.IsNullOrEmpty(HttpContext.Session.GetString("Usuario")))
+                {
+                    HttpContext.Response.Redirect("/");
+                    return;
+                }
                 Filtro!.Estado = Filtro!.Estado ?? "";
                 Lista = this.ICitasPresentacion.Buscar(Filtro!);
             }

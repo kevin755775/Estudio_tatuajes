@@ -33,8 +33,9 @@ builder.Services.AddScoped<ISedesAplicacion, SedesAplicacion>();
 builder.Services.AddScoped<ISesionesAplicacion, SesionesAplicacion>();
 builder.Services.AddScoped<ITatuadoresAplicacion, TatuadoresAplicacion>();
 builder.Services.AddScoped<ITatuajesAplicacion, TatuajesAplicacion>();
-
-
+builder.Services.AddScoped<IRolesAplicacion, RolesAplicacion>();
+builder.Services.AddScoped<IAuditoriasAplicacion, AuditoriasAplicacion>();
+builder.Services.AddScoped<IUsuariosAplicacion, UsuariosAplicacion>();
 
 //builder.Services.AddScoped<IAplicacion, Aplicacion>();
 // builder.Services.AddScoped<IentidadAplicacion, entidadAplicacion>();   para copiar y pegar y tener la inyeccion de dependencias
