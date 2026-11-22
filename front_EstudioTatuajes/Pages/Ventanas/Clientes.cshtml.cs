@@ -80,6 +80,7 @@ namespace front_EstudioTatuajes.Pages.Ventanas
             {
                 LogConversor.Log(ex, ViewData!);
                 Formulario = true; // Mantiene el formulario abierto si salta error de validación
+                this.Personas = this.IPersonasPresentacion.Consultar();
             }
             finally
             {
@@ -94,6 +95,7 @@ namespace front_EstudioTatuajes.Pages.Ventanas
                 Formulario = true;
                 OnPostBtConsultar();
                 this.Actual = this.Lista.FirstOrDefault(x => x.Id == Convert.ToInt32(data));
+                this.Personas = this.IPersonasPresentacion.Consultar();
             }
             catch (Exception ex)
             {

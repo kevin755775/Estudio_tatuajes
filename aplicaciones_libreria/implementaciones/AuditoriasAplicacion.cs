@@ -17,7 +17,7 @@ namespace Aplicaciones_libreria.implementaciones
         {
             return this.IConexion.Auditorias!
                 .Where(x => x.Entidad != null && x.Entidad.Contains(entidad.Entidad ?? ""))
-                .OrderByDescending(x => x.Fecha)
+                
                
                 .ToList();
         }

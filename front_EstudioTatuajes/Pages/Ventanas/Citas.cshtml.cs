@@ -95,6 +95,12 @@ namespace front_EstudioTatuajes.Pages.Ventanas
             {
                 LogConversor.Log(ex, ViewData!);
                 Formulario = true; // Mantiene el formulario abierto si salta error de validación
+                this.Tatuadores = this.ITatuadoresPresentacion.Consultar();
+                this.Clientes = this.IClientesPresentacion.Consultar();
+                this.Sedes = this.ISedesPresentacion.Consultar();
+                this.Facturas = this.IFacturasPresentacion.Consultar();
+                this.Consentimientos = this.IConsentimientosPresentacion.Consultar();
+                this.Tatuajes = this.ITatuajesPresentacion.Consultar();
             }
             finally
             {
@@ -108,7 +114,14 @@ namespace front_EstudioTatuajes.Pages.Ventanas
             {
                 Formulario = true;
                 OnPostBtConsultar();
+
                 this.Actual = this.Lista.FirstOrDefault(x => x.Id == Convert.ToInt32(data));
+                this.Tatuadores = this.ITatuadoresPresentacion.Consultar();
+                this.Clientes = this.IClientesPresentacion.Consultar(); 
+                this.Sedes = this.ISedesPresentacion.Consultar(); 
+                this.Facturas = this.IFacturasPresentacion.Consultar(); 
+                this.Consentimientos = this.IConsentimientosPresentacion.Consultar(); 
+                this.Tatuajes = this.ITatuajesPresentacion.Consultar();
             }
             catch (Exception ex)
             {

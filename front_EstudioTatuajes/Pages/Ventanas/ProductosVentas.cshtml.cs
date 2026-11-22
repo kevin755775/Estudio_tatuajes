@@ -88,6 +88,8 @@ namespace front_EstudioTatuajes.Pages.Ventanas
             {
                 LogConversor.Log(ex, ViewData!);
                 Formulario = true; // Mantiene el formulario abierto si salta error de validación
+                this.Proveedores = this.IProveedoresPresentacion.Consultar();
+                this.Sedes = this.ISedesPresentacion.Consultar();
             }
             finally
             {
