@@ -69,6 +69,8 @@ namespace front_EstudioTatuajes.Pages.Ventanas
         {
             try
             {
+                if (HttpContext.Session.GetString("Rol") != "Administrador")
+                    return;
                 if (this.Actual!.Id == 0)
                     this.Actual = this.IClientesPresentacion.Insertar(this.Actual!);
                 else
@@ -117,6 +119,8 @@ namespace front_EstudioTatuajes.Pages.Ventanas
         {
             try
             {
+                if (HttpContext.Session.GetString("Rol") != "Administrador")
+                    return;
                 if (this.Actual!.Id == 0)
                     return;
                 this.Actual = this.IClientesPresentacion.Borrar(this.Actual!);

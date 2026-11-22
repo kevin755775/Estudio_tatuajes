@@ -7,7 +7,10 @@
 {
     <div class="container" align="left" style="width:100%">
         <h3>Login</h3>
-
+        @if (ViewData.ContainsKey("Error"))
+        {
+            <p class="text-danger">@ViewData["Error"]</p>
+        }
         <form method="POST">
             <div style="width:60%">
                 <div class="form-group">

@@ -1,0 +1,167 @@
+﻿@page
+@model UsuariosModel
+@{
+    ViewData["Title"] = "Usuarios";
+    var rol = HttpContext.Session.GetString("Rol");
+}
+<form method="post"
+      enctype="multipart/form-data">
+
+    <div class="text-center">
+        <h1 class="display-4">Usuarios</h1>
+        <div>
+            <input type="submit"
+                   value="Consultar"
+                   class="btn btn-secondary"
+                   asp-page-handler="BtConsultar" />
+            @if (rol == "Administrador" || rol == "Recepcionista")
+            {
+                <input type="submit"
+                       value="Nuevo"
+                       class="btn btn-secondary"
+                       asp-page-handler="BtNuevo" />
+                <input type="submit"
+                       value="Guardar"
+                       class="btn btn-secondary"
+                       asp-page-handler="BtGuardar" />
+            }
+            <input id="flEmail"
+                   placeholder="Email"
+                   asp-for="@Model.Filtro!.Email" />
+        </div>
+
+        @if (ViewData.ContainsKey("Mensaje"))
+        {
+            @await Html.PartialAsync("../Emergentes/Mensajes.cshtml")
+            ;
+        }
+
+        @if (Model.Formulario || Model.Borrar)
+        {
+            <input type="hidden"
+                   asp-for="@Model.Actual!.Id" />
+        }
+
+        @if (Model.Formulario)
+        {
+            <div>
+                <h3>Usuarios</h3>
+
+                <label>
+                    Email
+                </label>
+                <input asp-for="@Model.Actual!.Email" />
+                <br />
+
+                <label>
+                    Clave (si está editando, déjela vacía para no cambiarla)
+                </label>
+                <input type="password"
+                       autocomplete="new-password"
+                       asp-for="@Model.Actual!.Clave" />
+                <br />
+
+                <label>
+                    Rol
+                </label>
+                <select id="nmRol"
+                        asp-for="@Model.Actual!.Rol"
+                        asp-items="@(new SelectList(Model.Roles, "Id", "Tipo"))">
+                </select>
+                <br />
+
+                <label>
+                    Persona -Nombre
+                </label>
+                <select id="nmPersona"
+                        asp-for="@Model.Actual!.Persona"
+                        asp-items="@(new SelectList(Model.Personas, "Id", "Nombre"))">
+                </select>
+                <br />
+
+                <label>
+                    Activo
+                </label>
+                <input type="checkbox" asp-for="@Model.Actual!.Activo" />
+                <br />
+            </div>
+        }
+
+        @if (Model.Borrar)
+        {
+            <div class="popup">
+                <div class="pp_del_inner">
+                    <h3>
+                        Mensaje
+                    </h3>
+
+                    <h4>
+                        ¿Quiere borrar el Usuario con información ID:
+                        @Model.Actual!.Id,
+                        Email @Model.Actual!.Email?
+                    </h4>
+                    <input type="submit"
+                           value="Cancelar"
+                           class="btn btn-secondary"
+                           asp-page-handler="BtConsultar" />
+                    <input type="submit"
+                           value="Borrar"
+                           class="btn btn-secondary"
+                           asp-page-handler="BtBorrar" />
+                </div>
+            </div>
+        }
+
+        @if (!Model.Formulario)
+        {
+            <br />
+            <br />
+            <div class="containers_vn panel panel-default">
+                <table class="tb_data table table-striped table-bordered table-hover">
+                    <tr>
+                        <th>ID</th>
+                        <th>Email</th>
+                        <th>Rol</th>
+                        <th>Persona</th>
+                        <th>Activo</th>
+
+                        <th>Acción</th>
+                    </tr>
+                    @if (Model != null && Model.Lista != null)
+                    {
+                        foreach (var elemento in Model.Lista)
+                        {
+                            <tr>
+                                <td>@elemento.Id</td>
+                                <td>@elemento.Email</td>
+                                <td>@elemento._Rol?.Tipo</td>
+                                <td>@elemento._Persona?.Nombre</td>
+                                <td>@(elemento.Activo ? "Sí" : "No")</td>
+
+                                <td>
+                                    @if (rol == "Administrador" || rol == "Recepcionista")
+                                    {
+                                        <input type="submit"
+                                               value="Editar"
+                                               class="btn btn-secondary"
+                                               asp-page-handler="BtEditar"
+                                               asp-route-data="@elemento.Id" />
+                                    }
+                                    @if (rol == "Administrador")
+                                    {
+                                        <input type="submit"
+                                               value="Borrar"
+                                               class="btn btn-secondary"
+                                               asp-page-handler="BtPregBorrar"
+                                               asp-route-data="@elemento.Id" />
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        }
+
+    </div>
+</form>

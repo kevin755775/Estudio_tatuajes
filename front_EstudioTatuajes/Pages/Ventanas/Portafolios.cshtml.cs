@@ -70,6 +70,9 @@ namespace front_EstudioTatuajes.Pages.Ventanas
         {
             try
             {
+                var rol = HttpContext.Session.GetString("Rol");
+                if (rol != "Administrador" && rol != "Recepcionista")
+                    return;
                 if (FormFile != null)
                 {
                     if (FormFile.Length > 500 * 1024)
@@ -127,6 +130,8 @@ namespace front_EstudioTatuajes.Pages.Ventanas
         {
             try
             {
+                if (HttpContext.Session.GetString("Rol") != "Administrador")
+                    return;
                 if (this.Actual!.Id == 0)
                     return;
                 this.Actual = this.IPortafoliosPresentacion.Borrar(this.Actual!);

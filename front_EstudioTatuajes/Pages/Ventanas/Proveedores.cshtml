@@ -2,6 +2,7 @@
 @model ProveedoresModel
 @{
     ViewData["Title"] = "Proveedores";
+    var rol = HttpContext.Session.GetString("Rol");
 }
 <form method="post"
       enctype="multipart/form-data">
@@ -13,14 +14,17 @@
                    value="Consultar"
                    class="btn btn-secondary"
                    asp-page-handler="BtConsultar" />
-            <input type="submit"
-                   value="Nuevo"
-                   class="btn btn-secondary"
-                   asp-page-handler="BtNuevo" />
-            <input type="submit"
-                   value="Guardar"
-                   class="btn btn-secondary"
-                   asp-page-handler="BtGuardar" />
+            @if (rol == "Administrador" || rol == "Recepcionista")
+            {
+                <input type="submit"
+                       value="Nuevo"
+                       class="btn btn-secondary"
+                       asp-page-handler="BtNuevo" />
+                <input type="submit"
+                       value="Guardar"
+                       class="btn btn-secondary"
+                       asp-page-handler="BtGuardar" />
+            }
             <input id="flNombreEmpresa"
                    placeholder="NombreEmpresa"
                    asp-for="@Model.Filtro!.NombreEmpresa" />
@@ -128,16 +132,22 @@
                                 <td>@elemento.Correo</td>
                                 <td>@elemento.Tipo</td>
                                 <td>
-                                    <input type="submit"
-                                           value="Editar"
-                                           class="btn btn-secondary"
-                                           asp-page-handler="BtEditar"
-                                           asp-route-data="@elemento.Id" />
-                                    <input type="submit"
-                                           value="Borrar"
-                                           class="btn btn-secondary"
-                                           asp-page-handler="BtPregBorrar"
-                                           asp-route-data="@elemento.Id" />
+                                    @if (rol == "Administrador" || rol == "Recepcionista")
+                                    {
+                                        <input type="submit"
+                                               value="Editar"
+                                               class="btn btn-secondary"
+                                               asp-page-handler="BtEditar"
+                                               asp-route-data="@elemento.Id" />
+                                    }
+                                    @if (rol == "Administrador")
+                                    {
+                                        <input type="submit"
+                                               value="Borrar"
+                                               class="btn btn-secondary"
+                                               asp-page-handler="BtPregBorrar"
+                                               asp-route-data="@elemento.Id" />
+                                    }
                                 </td>
                             </tr>
                         }

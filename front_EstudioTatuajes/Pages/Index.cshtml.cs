@@ -57,12 +57,14 @@ namespace front_EstudioTatuajes.Pages
 
                 if (usuario == null || usuario.Id == 0)
                 {
-                    OnPostBtClean();
+                    ViewData["Error"] = "Email o clave incorrectos";
+                    Clave = "";
                     return;
                 }
 
                 ViewData["Logged"] = true;
                 HttpContext.Session.SetString("Usuario", Email!);
+                HttpContext.Session.SetString("Rol", usuario._Rol?.Tipo ?? "");
                 EstaLogueado = true;
                 OnPostBtClean();
             }

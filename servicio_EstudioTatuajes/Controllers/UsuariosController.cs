@@ -16,6 +16,36 @@ namespace servicio_EstudioTatuajes.Controllers
         }
 
         [HttpPost]
+        public List<Usuarios> Consultar()
+        {
+            return this.IUsuariosAplicacion.Consultar();
+        }
+
+        [HttpPost]
+        public List<Usuarios> Buscar(Usuarios entidad)
+        {
+            return this.IUsuariosAplicacion.Buscar(entidad);
+        }
+
+        [HttpPost]
+        public Usuarios Insertar(Usuarios entidad)
+        {
+            return this.IUsuariosAplicacion.Insertar(entidad);
+        }
+
+        [HttpPost]
+        public Usuarios Actualizar(Usuarios entidad)
+        {
+            return this.IUsuariosAplicacion.Actualizar(entidad);
+        }
+
+        [HttpPost]
+        public Usuarios Borrar(Usuarios entidad)
+        {
+            return this.IUsuariosAplicacion.Borrar(entidad);
+        }
+
+        [HttpPost]
         public Usuarios Login(Usuarios entidad)
         {
             return this.IUsuariosAplicacion.Login(entidad);
