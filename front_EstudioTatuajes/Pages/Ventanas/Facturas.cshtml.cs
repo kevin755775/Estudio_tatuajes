@@ -3,6 +3,7 @@ using Aplicaciones_libreria.interfaces;
 using Aplicaciones_libreria.nucleo;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using front_EstudioTatuajes.Reportes;
 
 namespace front_EstudioTatuajes.Pages.Ventanas
 {
@@ -10,13 +11,14 @@ namespace front_EstudioTatuajes.Pages.Ventanas
     {
         private IFacturasPresentacion IFacturasPresentacion;
         private IPagosPresentacion IPagosPresentacion;
+        private IDetallesFacturasPresentacion IDetallesFacturasPresentacion;
 
 
-        public FacturasModel(IPagosPresentacion IPagosPresentacion, IFacturasPresentacion IFacturasPresentacion)
+        public FacturasModel(IPagosPresentacion IPagosPresentacion, IFacturasPresentacion IFacturasPresentacion, IDetallesFacturasPresentacion IDetallesFacturasPresentacion)
         {
             this.IPagosPresentacion = IPagosPresentacion;
             this.IFacturasPresentacion = IFacturasPresentacion;
-
+            this.IDetallesFacturasPresentacion = IDetallesFacturasPresentacion;
 
             this.Filtro = new Facturas();
         }
@@ -135,6 +137,25 @@ namespace front_EstudioTatuajes.Pages.Ventanas
             finally
             {
                 OnPostBtConsultar();
+            }
+        }
+        public IActionResult OnPostBtPdf(string data)
+        {
+            try
+            {
+                OnPostBtConsultar();
+                var factura = this.Lista.FirstOrDefault(x => x.Id == Convert.ToInt32(data));
+                var detalles = this.IDetallesFacturasPresentacion.Consultar()
+                    .Where(x => x.Factura == factura!.Id)
+                    .ToList();
+
+                var pdf = FacturaPdf.Generar(factura!, detalles);
+                return File(pdf, "application/pdf", "Factura_" + factura!.Id + ".pdf");
+            }
+            catch (Exception ex)
+            {
+                LogConversor.Log(ex, ViewData!);
+                return Page();
             }
         }
     }

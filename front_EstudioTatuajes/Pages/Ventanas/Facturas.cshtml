@@ -140,6 +140,12 @@
                                 <td>@elemento._Pago.Referencia</td>
 
                                 <td>
+                                    <input type="submit"
+                                           value="PDF"
+                                           class="btn btn-secondary"
+                                           formtarget="_blank"
+                                           asp-page-handler="BtPdf"
+                                           asp-route-data="@elemento.Id" />
                                     @if (rol == "Administrador" || rol == "Recepcionista")
                                     {
                                         <input type="submit"

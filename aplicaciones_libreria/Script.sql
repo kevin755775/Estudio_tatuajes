@@ -227,6 +227,19 @@ VALUES
 ('Jorge Luis Mendoza', '10203053', '3132211445', 'jorge.mendoza@email.com', '1989-09-01'),
 ('Valentina Osorio Gil', '10203054', '3056677889', 'valentina.osorio@email.com', '2002-04-03');
 
+
+INSERT INTO [Roles] ([Tipo], [Descripcion], [Activo])
+VALUES
+('Administrador', 'Acceso total', 1),
+('Recepcionista', 'Citas y facturacion', 1),
+('Tatuador', 'Citas, sesiones y portafolio', 1);
+
+INSERT INTO [Usuarios] ([Email], [Clave], [Rol], [Persona], [Activo])
+VALUES
+('admin@estudio.com', 'Admin.2026', 1, 3, 1),
+('recepcionista@estudio.com', 'Recepcionista.2026', 2, 7, 1),
+('tatuador@estudio.com', 'Tatuador.2026', 3, 1, 1);
+
 INSERT INTO [Sedes] ([Nombre], [Direccion], [Telefono], [Ciudad])
 VALUES
 ('Estudio Central', 'Av. Poblado #10-20', '6044441122', 'Medellín'),
@@ -235,13 +248,15 @@ VALUES
 ('Estudio Laureles', 'Tr. 39 #72-12', '6045556677', 'Medellín'),
 ('Estudio Granada', 'Av. 4 Norte #12-45', '6028889900', 'Cali');
 
+
 INSERT INTO [Portafolios] ([Titulo], [Descripcion], [FechaUltAct], [TotalDisenos])
 VALUES
 ('Sombras y Realismo', 'Trabajos de rostros y retratos en escala de grises', '2026-08-01', 45),
 ('Neotradicional Color', 'Diseños neotradicionales con paletas vibrantes', '2026-07-28', 32),
 ('Microrealismo Fineline', 'Trazos finos, letras y piezas pequeñas detalladas', '2026-08-12', 60),
-('Oriental & Irezumi', 'Composiciones asiáticas, dragones y carpas koi', '2026-06-19', 28),
+('Acuarela Artística', 'Piezas con efecto de pintura de agua y degradados de color', '2026-06-19', 28),
 ('Geometría y Blackwork', 'Patrones geométricos y piezas saturadas en negro', '2026-08-20', 50);
+
 
 INSERT INTO [Descuentos] ([Codigo], [PorcentajeDesc], [Estado])
 VALUES
@@ -259,21 +274,23 @@ VALUES
 ('Blackwork', 'Uso exclusivo de tinta negra con altas saturaciones', 'Alta'),
 ('Acuarela', 'Efecto de pintura de agua sin bordes negros definidos', 'Alta');
 
+
 INSERT INTO [Consentimientos] ([FechaFirma], [MayorEdad], [FirmaSiNo], [Observaciones])
 VALUES
 ('2026-08-01', 1, 1, 'Ninguna afección reportada'),
-('2026-08-02', 1, 1, 'Cliente declara no consumir anticoagulantes'),
+('2026-08-02', 1, 1, 'Alergia al látex; usar guantes de nitrilo'),
 ('2026-08-05', 1, 1, 'Sin alergias a tintas o anestesia'),
-('2026-08-10', 1, 1, 'Proceso prolongado; cliente informado de pausas'),
-('2026-08-12', 1, 1, 'Alergia leve al látex; usar guantes de nitrilo');
+('2026-08-10', 1, 1, 'Alergia al yodo; usar antiséptico alterno. Proceso prolongado, cliente informado de pausas'),
+('2026-08-12', 1, 1, 'Sin alergias reportadas');
+
 
 INSERT INTO [Pagos] ([MetodoPago], [Valor], [Fecha], [Referencia])
 VALUES
-('Transferencia', 405000.00, '2026-08-01', 'TR-987654'),
-('Tarjeta Crédito', 680000.00, '2026-08-02', 'CR-112233'),
-('Efectivo', 144000.00, '2026-08-05', 'EF-000123'),
-('Transferencia', 900000.00, '2026-08-10', 'TR-456789'),
-('Tarjeta Débito', 245000.00, '2026-08-12', 'DB-556677');
+('Transferencia', 109480.00, '2026-08-01', 'TR-987654'),
+('Tarjeta Crédito', 53550.00, '2026-08-02', 'CR-112233'),
+('Efectivo', 66640.00, '2026-08-05', 'EF-000123'),
+('Transferencia', 83300.00, '2026-08-10', 'TR-456789'),
+('Tarjeta Débito', 71400.00, '2026-08-12', 'DB-556677');
 
 INSERT INTO [Proveedores] ([NombreEmpresa], [Telefono], [Direccion], [Correo], [Tipo])
 VALUES
@@ -299,6 +316,7 @@ VALUES
 ('Contador', 3000000.00, '2023-11-01', 2, 12),
 ('Recepcionista', 1400000.00, '2025-05-20', 3, 14);
 
+
 INSERT INTO [Tatuadores] ([Licencia], [AnExperiencia], [Especialidad], [Portafolio], [Persona], [Sede])
 VALUES
 ('LIC-2021-001', 8, 'Realismo', 1, 1, 1),
@@ -307,13 +325,14 @@ VALUES
 ('LIC-2020-112', 7, 'Blackwork', 5, 11, 2),
 ('LIC-2023-018', 4, 'Acuarela', 4, 15, 3);
 
+
 INSERT INTO [Cotizaciones] ([ValorEstimado], [FechaEmision], [VigenciaDias], [Tatuador], [Descuento])
 VALUES
 (450000.00, '2026-07-25', 15, 1, 1),
 (800000.00, '2026-07-28', 30, 2, 2),
-(180000.00, '2026-08-01', 10, 3, 3),
+(180000.00, '2026-08-01', 10, 3, 1),
 (120000.00, '2026-08-03', 20, 4, 4),
-(350000.00, '2026-08-05', 15, 5, 5);
+(350000.00, '2026-08-05', 15, 5, 2);
 
 INSERT INTO [Gastos] ([Valor], [Descripcion], [Fecha], [Categoria], [Sede])
 VALUES
@@ -323,6 +342,7 @@ VALUES
 (95000.00, 'Compra de insumos de cafetería', '2026-08-08 11:20:00', 'Varios', 2),
 (210000.00, 'Servicio de internet fibra óptica', '2026-08-10 09:15:00', 'Servicios', 3);
 
+
 INSERT INTO [Tatuajes] ([ZonaCuerpo], [Ancho], [Alto], [Color], [EstiloTatuaje])
 VALUES
 ('Antebrazo', 5.00, 15.00, 0, 1),
@@ -331,21 +351,24 @@ VALUES
 ('Espalda', 22.00, 30.00, 0, 4),
 ('Costillas', 20.00, 12.50, 1, 5);
 
+
 INSERT INTO [Sesiones] ([NroSesion], [DuracionHrs], [FechaInicio], [Tatuaje])
 VALUES
 (1, 3.50, '2026-08-01', 1),
 (1, 4.00, '2026-08-02', 2),
 (2, 3.00, '2026-08-16', 2),
 (1, 1.50, '2026-08-05', 3),
-(1, 5.00, '2026-08-10', 4);
+(1, 5.00, '2026-08-10', 4),
+(1, 2.00, '2026-08-12', 5);
+
 
 INSERT INTO [Facturas] ([Fecha], [Hora], [Total], [IVA], [Pago])
 VALUES
-('2026-08-01', '13:30:00', 405000.00, 19.00, 1),
-('2026-08-02', '18:15:00', 680000.00, 19.00, 2),
-('2026-08-05', '12:45:00', 144000.00, 19.00, 3),
-('2026-08-10', '14:20:00', 900000.00, 19.00, 4),
-('2026-08-12', '17:00:00', 245000.00, 19.00, 5);
+('2026-08-01', '2026-08-01 13:30:00', 109480.00, 19.00, 1),
+('2026-08-02', '2026-08-02 18:15:00', 53550.00, 19.00, 2),
+('2026-08-05', '2026-08-05 12:45:00', 66640.00, 19.00, 3),
+('2026-08-10', '2026-08-10 14:20:00', 83300.00, 19.00, 4),
+('2026-08-12', '2026-08-12 17:00:00', 71400.00, 19.00, 5);
 
 INSERT INTO [ProductosVentas] ([Nombre], [Precio], [Stock], [Marca], [Proveedores], [Sede])
 VALUES
@@ -358,10 +381,11 @@ VALUES
 INSERT INTO [Implementos] ([Nombre], [Precio], [Stock], [Marca], [Proveedores], [Sede])
 VALUES
 ('Agujas RL3 Cero 0.35mm (Caja)', 85000.00, 20, 'KWADRON', 2, 1),
-('Tinta Negra Dynamic 8oz', 14000.00, 12, 'Dynamic Color', 2, 1),
+('Tinta Negra Dynamic 8oz', 95000.00, 12, 'Dynamic Color', 2, 1),
 ('Guantes Nitrilo Negro M (Caja)', 32000.00, 40, 'CareHand', 1, 2),
 ('Papel Hectográfico Spirit (Caja)', 110000.00, 8, 'Reprofx', 1, 2),
-('Anestesia Tópica TKTX 10g', 40000.00, 15, 'TKTX', 3, 3);
+('Anestesia Tópica TKTX 10g', 40000.00, 15, 'TKTX', 1, 3);
+
 
 INSERT INTO [Citas] ([FechaHora], [Estado], [Tatuaje], [Consentimiento], [Factura], [Sede], [Cliente], [Tatuador])
 VALUES
@@ -369,7 +393,8 @@ VALUES
 ('2026-08-02 14:00:00', 'Completada', 2, 2, 2, 1, 2, 2),
 ('2026-08-05 11:00:00', 'Completada', 3, 3, 3, 2, 3, 3),
 ('2026-08-10 09:00:00', 'Completada', 4, 4, 4, 2, 4, 4),
-('2026-08-12 15:00:00', 'Pendiente', 5, 5, 5, 3, 5, 5);
+('2026-08-12 15:00:00', 'Completada', 5, 5, 5, 3, 5, 5);
+
 
 INSERT INTO [DetallesFacturas] ([Cantidad], [PrecioUnitario], [Subtotal], [Factura], [Producto])
 VALUES
@@ -377,15 +402,7 @@ VALUES
 (1, 22000.00, 22000.00, 1, 2),
 (1, 45000.00, 45000.00, 2, 3),
 (2, 28000.00, 56000.00, 3, 4),
+(2, 35000.00, 70000.00, 4, 1),
 (1, 60000.00, 60000.00, 5, 5);
-INSERT INTO [Roles] ([Tipo], [Descripcion], [Activo])
-VALUES
-('Administrador', 'Acceso total', 1),
-('Recepcionista', 'Citas y facturacion', 1),
-('Tatuador', 'Citas, sesiones y portafolio', 1);
-
-INSERT INTO [Usuarios] ([Email], [Clave], [Rol], [Persona], [Activo])
-VALUES ('admin@estudio.com', 'Admin.2026', 1, 1, 1);
-
 
 */
