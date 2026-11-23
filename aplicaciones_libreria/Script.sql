@@ -66,6 +66,7 @@ CREATE TABLE [EstilosTatuajes] (
     [Id] INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
     [Nombre] NVARCHAR(100) NOT NULL,
     [Descripcion] NVARCHAR(500) NOT NULL,
+    [ImagenEstilosTatuajes] NVARCHAR(MAX) NULL,
     [NivelDificultad] NVARCHAR(50) NOT NULL
 );
 

@@ -11,6 +11,7 @@ namespace Aplicaciones_libreria.entidades
         public string? Nombre { get; set; }
         public string? Descripcion { get; set; }
         public string? NivelDificultad { get; set; }
+        public string? ImagenEstilosTatuajes { get; set; }
 
         public List<Tatuajes>? Tatuajes { get; set; }
     }
