@@ -70,6 +70,21 @@
                 </label>
                 <input asp-for="@Model.Actual!.Ciudad" />
                 <br />
+
+                <label>
+                    Imagen Sedes
+                </label>
+                @if (Model.Actual!.ImagenSedes != null)
+                {
+                    <img height="100"
+                         width="100"
+                         src="data:image;base64,
+                    @System.Convert.ToBase64String(
+                    Convert.FromBase64String(
+                    Model.Actual!.ImagenSedes))" />
+                }
+                <input type="file"
+                       asp-for="FormFile" />
             </div>
         }
 
@@ -111,7 +126,10 @@
                         <th>Direccion</th>
                         <th>Telefono</th>
                         <th>Ciudad</th>
+                        <th>ImagenSedes</th>
+
                         <th>Acción</th>
+                        
                     </tr>
                     @if (Model != null && Model.Lista != null)
                     {
@@ -123,7 +141,19 @@
                                 <td>@elemento.Direccion</td>
                                 <td>@elemento.Telefono</td>
                                 <td>@elemento.Ciudad</td>
+
                                 <td>
+                                    @if (elemento.ImagenSedes != null)
+                                    {
+                                        <img height="60"
+                                             width="60"
+                                             src="data:image;base64,
+                                        @System.Convert.ToBase64String(
+                                        Convert.FromBase64String(elemento.ImagenSedes))" />
+                                    }
+                                </td>
+                                <td>
+
                                     @if (rol == "Administrador" || rol == "Recepcionista")
                                     {
                                         <input type="submit"

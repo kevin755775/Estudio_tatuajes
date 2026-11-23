@@ -11,6 +11,7 @@ namespace Aplicaciones_libreria.entidades
         public string? Direccion { get; set; }
         public string? Telefono { get; set; }
         public string? Ciudad { get; set; }
+        public string? ImagenSedes { get; set; }
 
         public List<Empleados>? Empleados { get; set; }
         public List<Tatuadores>? Tatuadores { get; set; }

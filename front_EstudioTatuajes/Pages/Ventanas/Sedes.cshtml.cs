@@ -62,6 +62,15 @@ namespace front_EstudioTatuajes.Pages.Ventanas
                 var rol = HttpContext.Session.GetString("Rol");
                 if (rol != "Administrador" && rol != "Recepcionista")
                     return;
+                if (FormFile != null)
+                {
+                    if (FormFile.Length > 500 * 1024)
+                        throw new Exception("La imagen no puede superar 500 KB");
+                    var memoryStream = new MemoryStream();
+                    FormFile.CopyToAsync(memoryStream).Wait();
+                    Actual!.ImagenSedes = Convert.ToBase64String(memoryStream.ToArray());
+                    memoryStream.Dispose();
+                }
                 if (this.Actual!.Id == 0)
                     this.Actual = this.ISedesPresentacion.Insertar(this.Actual!);
                 else
