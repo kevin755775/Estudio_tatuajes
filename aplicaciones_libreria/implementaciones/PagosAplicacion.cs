@@ -59,7 +59,7 @@ namespace Aplicaciones_libreria.implementaciones
         public List<Pagos> Buscar(Pagos entidad)
         {
             return this.IConexion.Pagos!
-                .Where(x => x.MetodoPago != null && x.MetodoPago.Contains(entidad.MetodoPago ?? ""))
+                .Where(x => x.Referencia != null && x.Referencia.Contains(entidad.Referencia ?? ""))
                 .ToList();
         }
 

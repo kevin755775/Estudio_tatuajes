@@ -41,7 +41,7 @@ namespace front_EstudioTatuajes.Pages.Ventanas
                     HttpContext.Response.Redirect("/");
                     return;
                 }
-                Filtro!.MetodoPago = Filtro!.MetodoPago ?? "";
+                Filtro!.Referencia = Filtro!.Referencia ?? "";
                 Lista = this.IPagosPresentacion.Buscar(Filtro!);
             }
             catch (Exception ex)
