@@ -43,6 +43,7 @@ CREATE TABLE [Sedes] (
     [Nombre] NVARCHAR(100) NOT NULL,
     [Direccion] NVARCHAR(200) NOT NULL,
     [Telefono] NVARCHAR(50) NOT NULL,
+    [ImagenPersonas] NVARCHAR(MAX) NULL,
     [Ciudad] NVARCHAR(100) NOT NULL
 );
 
